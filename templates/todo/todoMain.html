@@ -1,0 +1,7 @@
+{% import "github.com/Jiang-Gianni/gthc/db" %}
+{% func TodoMain(todos []db.GetAllTodoRow) %}
+<h1
+    class="mb-5 text-3xl font-bold leading-tight text-teal-500 dark:text-teal-500 sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight text-center">
+    Todo App</h1>
+{%= TodoTable(todos)%}
+{% endfunc %}

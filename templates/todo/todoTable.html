@@ -1,0 +1,36 @@
+{% import "github.com/Jiang-Gianni/gthc/db" %}
+{% func TodoTable(todos []db.GetAllTodoRow) %}
+<div id="todo-contents"
+    class="flex flex-col overflow-x-auto sm:-mx-6 lg:-mx-8 min-w-full py-2 sm:px-6 lg:px-8 overflow-hidden">
+
+    <div class="flex justify-center gap-20 p-4">
+        <button hx-get="todo\new" hx-target="#todo-contents" class="btn btn-accent">
+            Create new Todo
+        </button>
+    </div>
+
+    <h1 class="self-center font-bold pt-7">Todo List</h1>
+
+    <table class="min-w-full text-left text-sm font-light">
+        <thead class="border-b font-medium dark:border-neutral-500">
+            <tr>
+                <th scope="col" class="px-6 py-4">ID</th>
+                <th scope="col" class="px-6 py-4">Description</th>
+                <th scope="col" class="px-6 py-4">Status</th>
+                <th scope="col" class="px-6 py-4">Created On</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for _, todo := range todos %}
+            <tr hx-get="todo{%v todo.ID %}" hx-target="#todo-contents"
+                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-200">
+                <td class="whitespace-nowrap px-6 py-4">{%v todo.ID %}</td>
+                <td class="whitespace-nowrap px-6 py-4">{%v todo.Description %}</td>
+                <td class="whitespace-nowrap px-6 py-4">{%v todo.Status %}</td>
+                <td class="whitespace-nowrap px-6 py-4">{%v todo.CreatedOn %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endfunc %}

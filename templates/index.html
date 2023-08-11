@@ -1,0 +1,46 @@
+{% func Index() %}
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a Todo App with basic CRUD operations">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="cyan">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="./assets/tailwind.css">
+    <script type="text/javascript" src="./assets/htmx.js"></script>
+    <script async type="text/javascript" src="./assets/alpine.js"></script>
+    <script type="text/javascript" src="./assets/classtools.js"></script>
+    <link rel="manifest" href="./assets/manifest.json" />
+    <link rel="icon" type="image/x-icon" href="./assets/favicon/favicon.ico">
+
+    <!-- Debug -->
+    <script>htmx.logAll()</script>
+
+</head>
+
+<body>
+
+    <div class="contents">
+
+        <div class="flex justify-center gap-20 p-4" x-show="true">
+
+            <!-- Alpine -->
+            <button hx-get="alpine" hx-target=".contents" hx-push-url="false" class="btn btn-accent">
+                Alpine
+            </button>
+
+            <!-- AppTodo -->
+            <button hx-get="todo" hx-target=".contents" hx-push-url="false" class="btn btn-accent">
+                Todo App
+            </button>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+{% endfunc %}

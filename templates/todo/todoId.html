@@ -1,0 +1,68 @@
+{% import "github.com/Jiang-Gianni/gthc/db" %}
+{% func TodoId(todo db.GetTodoRow, statusList []db.Status) %}
+<div class="justify-center flex gap-20">
+
+    <!-- Description -->
+    <div class="form-control">
+        <label class="label">
+            <span class="label-text">Description</span>
+        </label>
+        <textarea name="description" type="text" placeholder="Todo Description"
+            class="textarea textarea-bordered textarea-lg w-full max-w-xs">{%s todo.Description %}</textarea>
+    </div>
+
+    <!-- Status -->
+    {% if len(statusList) > 0 %}
+    <div class="form-control w-full max-w-xs">
+        <label class="label">
+            <span class="label-text">Todo Status</span>
+        </label>
+        <select class="select select-bordered" name="status_id">
+            {% for _, status := range statusList %}
+            <option value="{%v status.ID %}" {% if status.ID==todo.StatusID %}selected{% endif %}>{%s status.Description
+                %}
+            </option>
+
+            {% endfor %}
+        </select>
+    </div>
+    {% endif %}
+
+</div>
+
+{% if todo.ID != 0 %}
+<!-- Updating or deleting a Todo -->
+
+<div class="flex justify-center gap-20 p-4">
+
+    <button hx-post="todo{%v todo.ID %}" hx-include="[name='description'], [name='status_id']"
+        hx-target="#todo-contents" class="btn btn-primary btn-wide">Update</button>
+
+    <button class="btn btn-error btn-wide" onclick="del_btn.showModal()">Delete</button>
+    <dialog id="del_btn" class="modal">
+        <form method="dialog" class="modal-box">
+            <h3 class="font-bold text-lg">Delete</h3>
+            <p class="py-4">Click Confirm to delete this todo. Press ESC key or click Cancel to close</p>
+            <div class="modal-action">
+                <button class="btn">Cancel</button>
+                <button hx-delete="todo{%v todo.ID %}" hx-target="#todo-contents" class="btn btn-error">Confirm</button>
+            </div>
+        </form>
+    </dialog>
+
+</div>
+
+{% else %}
+
+<!-- Creating a new Todo -->
+
+<div class="flex justify-center gap-20 p-4">
+
+    <button hx-post="todo" hx-include="[name='description']" hx-target="#todo-contents" class="btn btn-accent">
+        Create
+    </button>
+
+</div>
+
+{% endif %}
+{% endfunc %}

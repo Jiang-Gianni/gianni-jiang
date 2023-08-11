@@ -1,0 +1,65 @@
+{% func AlpineMain() %}
+<h1
+    class="mb-5 text-3xl font-bold leading-tight text-teal-500 dark:text-teal-500 sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight text-center">
+    Alpine</h1>
+<p>Hello Alpine</p>
+
+{%= AlpineCountToggle()%}
+
+{%= AlpineSearchInput()%}
+
+{% endfunc %}
+
+
+
+{% func AlpineCountToggle() %}
+<br>
+<strong>Count Toggle Transitions</strong>
+<div x-data="{ open: false, count: 0 }" class="transition ease-out duration-1000 bg-orange-200 bg-green-200"
+    hx-ext="class-tools" classes="toggle bg-green-200:1s, toggle bg-orange-200:1s">
+    <button @click="open = ! open;" x-text="open?'Hide':'Show'" class="btn btn-primary"></button>
+    <br>
+    <button @click="count++;" class="btn btn-secondary">Count</button>
+    <br>
+    <div x-show="open" x-transition>
+        <span x-text="'Count is ' + count "></span>
+    </div>
+</div>
+<br>
+{% endfunc %}
+
+
+
+{% func AlpineSearchInput() %}
+<br>
+<div x-data="{
+        search: '',
+        items: ['foo', 'bar', 'baz'],
+        get filteredItems() {
+            return this.items.filter(
+                i => i.startsWith(this.search)
+            )
+        }
+    }">
+
+    <strong>Search Input with getters</strong>
+    <br>
+    <input x-model="search" placeholder="Search...">
+    <ul>
+        <template x-for="item in filteredItems" :key="item">
+            <li x-text="item"></li>
+        </template>
+    </ul>
+
+    <strong>Search Input with x-show</strong>
+    <br>
+    <input x-model="search" placeholder="Search...">
+    <ul>
+        <template x-for="item in items" :key="item">
+            <li x-text="item" x-show="item.startsWith(search)"></li>
+        </template>
+    </ul>
+
+
+</div>
+{% endfunc %}
