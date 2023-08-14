@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/Jiang-Gianni/gthc/server"
+	"github.com/Jiang-Gianni/gianni-jiang/server"
 )
 
 func main() {

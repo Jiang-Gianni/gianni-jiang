@@ -18,7 +18,7 @@ var (
 )
 
 //line views/index.html:1
-func StreamIndex(qw422016 *qt422016.Writer) {
+func StreamIndex(qw422016 *qt422016.Writer, projectMap map[string]Project, sortApis []string, currentProject string, currentSection string) {
 //line views/index.html:1
 	qw422016.N().S(`
 <!DOCTYPE html>
@@ -26,10 +26,10 @@ func StreamIndex(qw422016 *qt422016.Writer) {
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="This is a Todo App with basic CRUD operations">
+    <meta name="description" content="Gianni Jiang">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="cyan">
-    <title>Todo App</title>
+    <title>Gianni Jiang</title>
     <link rel="stylesheet" href="./assets/tailwind.css">
     <script type="text/javascript" src="./assets/htmx.js"></script>
     <script async type="text/javascript" src="./assets/alpine.js"></script>
@@ -44,53 +44,56 @@ func StreamIndex(qw422016 *qt422016.Writer) {
 
 <body>
 
-    <div class="contents">
-
-        <div class="flex justify-center gap-20 p-4" x-show="true">
-
-            <!-- Alpine -->
-            <button hx-get="alpine" hx-target=".contents" hx-push-url="false" class="btn btn-accent">
-                Alpine
-            </button>
-
-            <!-- AppTodo -->
-            <button hx-get="todo" hx-target=".contents" hx-push-url="false" class="btn btn-accent">
-                Todo App
-            </button>
-
+    <div class="flex">
+        <div id="side-menu" class="h-screen bg-teal-300 transition-[0.5s] pt-[30px] w-1/6">
+            `)
+//line views/index.html:27
+	StreamCommonSideMenu(qw422016, projectMap, sortApis, currentProject, currentSection)
+//line views/index.html:27
+	qw422016.N().S(`
         </div>
 
+        <div id="contents" class="h-screen transition-[0.5s] w-5/6 text-center pt-[30px]">
+            `)
+//line views/index.html:31
+	StreamCommonContents(qw422016, projectMap[currentProject].SectionMap[currentSection])
+//line views/index.html:31
+	qw422016.N().S(`
+        </div>
     </div>
+
+
+
 
 </body>
 
 </html>
 `)
-//line views/index.html:46
+//line views/index.html:41
 }
 
-//line views/index.html:46
-func WriteIndex(qq422016 qtio422016.Writer) {
-//line views/index.html:46
+//line views/index.html:41
+func WriteIndex(qq422016 qtio422016.Writer, projectMap map[string]Project, sortApis []string, currentProject string, currentSection string) {
+//line views/index.html:41
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line views/index.html:46
-	StreamIndex(qw422016)
-//line views/index.html:46
+//line views/index.html:41
+	StreamIndex(qw422016, projectMap, sortApis, currentProject, currentSection)
+//line views/index.html:41
 	qt422016.ReleaseWriter(qw422016)
-//line views/index.html:46
+//line views/index.html:41
 }
 
-//line views/index.html:46
-func Index() string {
-//line views/index.html:46
+//line views/index.html:41
+func Index(projectMap map[string]Project, sortApis []string, currentProject string, currentSection string) string {
+//line views/index.html:41
 	qb422016 := qt422016.AcquireByteBuffer()
-//line views/index.html:46
-	WriteIndex(qb422016)
-//line views/index.html:46
+//line views/index.html:41
+	WriteIndex(qb422016, projectMap, sortApis, currentProject, currentSection)
+//line views/index.html:41
 	qs422016 := string(qb422016.B)
-//line views/index.html:46
+//line views/index.html:41
 	qt422016.ReleaseByteBuffer(qb422016)
-//line views/index.html:46
+//line views/index.html:41
 	return qs422016
-//line views/index.html:46
+//line views/index.html:41
 }

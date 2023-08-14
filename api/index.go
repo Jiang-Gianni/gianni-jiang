@@ -3,7 +3,7 @@ package vercel
 import (
 	"net/http"
 
-	"github.com/Jiang-Gianni/gthc/server"
+	"github.com/Jiang-Gianni/gianni-jiang/server"
 	"github.com/gofiber/adaptor/v2"
 )
 

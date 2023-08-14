@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/Jiang-Gianni/gthc/db"
+	"github.com/Jiang-Gianni/gianni-jiang/db"
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
@@ -20,7 +20,7 @@ type Server struct {
 
 func New() Server {
 	godotenv.Load("keys.env")
-	dbConn := os.Getenv("POSTGRES")
+	dbConn := os.Getenv("POSTGRESQL")
 	postgres, err := sql.Open("postgres", dbConn)
 	if err != nil {
 		log.Fatal(err)
@@ -36,14 +36,18 @@ func New() Server {
 func (s *Server) RegisterHandlers() {
 
 	s.App.Static("/assets", "./assets")
+
+	// s.App.Get("/todo", s.GetTodo)
+	// s.App.Get("/todo:id", s.GetTodoId)
+	// s.App.Post("/todo:id", s.PostTodoId)
+	// s.App.Delete("/todo:id", s.DeleteTodoId)
+	// s.App.Get("/todo/new", s.GetTodoNew)
+	// s.App.Post("/todo", s.PostTodo)
+
+	// s.App.Get("/alpine", s.GetAlpine)
+
 	s.App.Get("/", s.GetIndex)
+	s.App.Get("/:project", s.GetProject)
+	s.App.Get("/:project/:section", s.GetProject)
 
-	s.App.Get("/todo", s.GetTodo)
-	s.App.Get("/todo:id", s.GetTodoId)
-	s.App.Post("/todo:id", s.PostTodoId)
-	s.App.Delete("/todo:id", s.DeleteTodoId)
-	s.App.Get("/todo/new", s.GetTodoNew)
-	s.App.Post("/todo", s.PostTodo)
-
-	s.App.Get("/alpine", s.GetAlpine)
 }

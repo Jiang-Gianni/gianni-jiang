@@ -1,34 +1,12 @@
 package server
 
 import (
-	"log"
 	"strconv"
 
-	"github.com/Jiang-Gianni/gthc/db"
-	"github.com/Jiang-Gianni/gthc/views"
+	"github.com/Jiang-Gianni/gianni-jiang/db"
+	"github.com/Jiang-Gianni/gianni-jiang/views"
 	"github.com/gofiber/fiber/v2"
 )
-
-func SetHtmlContentType(c *fiber.Ctx) error {
-	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-	return nil
-}
-
-func ExtractInt(c *fiber.Ctx, param string) (int, error) {
-	intParam := c.Params(param)
-	return strconv.Atoi(intParam)
-}
-
-func ErrorHandler(c *fiber.Ctx, err error) error {
-	log.Println(err.Error())
-	_, writeErr := c.WriteString("Internal Error: " + err.Error())
-	return writeErr
-}
-
-func (s *Server) GetIndex(c *fiber.Ctx) error {
-	views.WriteIndex(c)
-	return SetHtmlContentType(c)
-}
 
 func (s *Server) GetTodo(c *fiber.Ctx) error {
 	todos, err := s.Query.GetAllTodo(s.Context)

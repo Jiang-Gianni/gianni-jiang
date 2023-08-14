@@ -1,0 +1,26 @@
+{% func Text(textList []string) %}
+{% for _, text := range textList %}
+<p>{%s text %}</p>
+{% endfor %}
+{% endfunc %}
+
+
+{% func List(textList []string) %}
+<ul class="list-disc list-inside">
+    {% for _, text := range textList %}
+    <li>{%s text %}</li>
+    {% endfor %}
+</ul>
+{% endfunc %}
+
+{% func Link(href string, text string) %}
+<a href="{%s href %}">{%s text %}</a>
+{% endfunc %}
+
+{% func Code(text string) %}
+<code>{%s text %}</code>
+{% endfunc %}
+
+{% func Strong(text string) %}
+<strong>{%s text %}</strong>
+{% endfunc %}

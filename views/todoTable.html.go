@@ -5,7 +5,7 @@
 package views
 
 //line views/todoTable.html:1
-import "github.com/Jiang-Gianni/gthc/db"
+import "github.com/Jiang-Gianni/gianni-jiang/db"
 
 //line views/todoTable.html:2
 import (

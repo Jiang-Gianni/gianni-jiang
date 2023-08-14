@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/Jiang-Gianni/gthc/views"
+	"github.com/Jiang-Gianni/gianni-jiang/views"
 	"github.com/gofiber/fiber/v2"
 )
 

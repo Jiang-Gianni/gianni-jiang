@@ -1,4 +1,4 @@
-module github.com/Jiang-Gianni/gthc
+module github.com/Jiang-Gianni/gianni-jiang
 
 go 1.20
 
