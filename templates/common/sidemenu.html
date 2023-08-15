@@ -1,40 +1,42 @@
-{% func CommonSideMenu(projectMap map[string]Project, sortApis []string, currentProject string, currentSection string)
+{% func CommonSideMenu(projectMap map[string]Project, sortApis []string)
 %}
 
-<!-- <a href="#" aria-current="page" class="inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500">Profile</a>
 
-<a href="#" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Dashboard</a> -->
 
-<div>
+{% for _, projectApi := range sortApis %}
 
-    {% for _, projectApi := range sortApis %}
+{% code project := projectMap[projectApi] %}
 
-    {% code isCurrentProject := currentProject == projectApi %}
-    {% code project := projectMap[projectApi] %}
+<div x-data="{project:'{%s projectApi %}'}" class="project" :class="{'bg-blue-200':activeProject == project}">
+    <a hx-get="{%v project.Api %}" hx-target="#contents"
+        class="no-underline text-[25px] text-cyan-700 hover:text-cyan-900 block transition-[0.3s] pl-8 pr-2 py-2 hover:bg-green-200"
+        @click="activeProject = project; activeSection = 'introduction'">{%s
+        project.Title %}</a>
 
-    <div class="project {% if isCurrentProject %}bg-blue-200{% endif %}">
-        <a hx-get="{%v project.Api %}" hx-target="#contents"
-            class="no-underline text-[25px] text-cyan-700 hover:text-cyan-900 block transition-[0.3s] pl-8 pr-2 py-2">{%s
-            project.Title %}</a>
+    <!-- Section Menu -->
+    <div x-show="activeProject == project"
+        x-transition:enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 transform order-first"
+        x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-300 transform absolute"
+        x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-12">
+        {% for _, sectionApi := range project.SortApis %}
+
+        {% code section := project.SectionMap[sectionApi] %}
+
+        <div x-data="{section:'{%s sectionApi %}'}"
+            class="section transition ease-out duration-1000 hover:bg-orange-200"
+            :class="activeSection == section ? 'bg-blue-100' :'bg-teal-300'" @click="activeSection = section;">
+            <a hx-get="{%v projectApi %}/{%v sectionApi %}" hx-target="#contents"
+                class="no-underline text-[20px] text-cyan-700 hover:text-cyan-900 block transition-[0.3s] pl-12 pr-2 py-2">{%s
+                section.Title %}</a>
+        </div>
+        {% endfor %}
     </div>
-
-
-    {% if isCurrentProject %}
-    {% for _, sectionApi := range project.SortApis %}
-
-    {% code isCurrentSection := currentSection==sectionApi %}
-    {% code section := project.SectionMap[sectionApi] %}
-
-    <div class="section {% if isCurrentSection %}bg-blue-100{% endif %}">
-        <a hx-get="{%v projectApi %}/{%v sectionApi %}" hx-target="#contents"
-            class="no-underline text-[20px] text-cyan-700 hover:text-cyan-900 block transition-[0.3s] pl-12 pr-2 py-2">{%s
-            section.Title %}</a>
-    </div>
-    {% endfor %}
-    {% endif %}
-
-    {% endfor %}
 
 </div>
+
+{% endfor %}
+
+
 
 {% endfunc %}

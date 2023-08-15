@@ -13,7 +13,7 @@ var SortApis = []string{
 }
 
 var ProjectSort = []string{
-	KeyboardFirst,
+	KeyboardIntroduction,
 	KeyboardSecond,
 }
 

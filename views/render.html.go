@@ -118,12 +118,16 @@ func List(textList []string) string {
 }
 
 //line views/render.html:16
-func StreamLink(qw422016 *qt422016.Writer, href string, text string) {
+func StreamLink(qw422016 *qt422016.Writer, href string, text string, target string) {
 //line views/render.html:16
 	qw422016.N().S(`
 <a href="`)
 //line views/render.html:17
 	qw422016.E().S(href)
+//line views/render.html:17
+	qw422016.N().S(`" target="`)
+//line views/render.html:17
+	qw422016.E().S(target)
 //line views/render.html:17
 	qw422016.N().S(`">`)
 //line views/render.html:17
@@ -135,22 +139,22 @@ func StreamLink(qw422016 *qt422016.Writer, href string, text string) {
 }
 
 //line views/render.html:18
-func WriteLink(qq422016 qtio422016.Writer, href string, text string) {
+func WriteLink(qq422016 qtio422016.Writer, href string, text string, target string) {
 //line views/render.html:18
 	qw422016 := qt422016.AcquireWriter(qq422016)
 //line views/render.html:18
-	StreamLink(qw422016, href, text)
+	StreamLink(qw422016, href, text, target)
 //line views/render.html:18
 	qt422016.ReleaseWriter(qw422016)
 //line views/render.html:18
 }
 
 //line views/render.html:18
-func Link(href string, text string) string {
+func Link(href string, text string, target string) string {
 //line views/render.html:18
 	qb422016 := qt422016.AcquireByteBuffer()
 //line views/render.html:18
-	WriteLink(qb422016, href, text)
+	WriteLink(qb422016, href, text, target)
 //line views/render.html:18
 	qs422016 := string(qb422016.B)
 //line views/render.html:18

@@ -18,150 +18,126 @@ var (
 )
 
 //line views/sidemenu.html:1
-func StreamCommonSideMenu(qw422016 *qt422016.Writer, projectMap map[string]Project, sortApis []string, currentProject string, currentSection string) {
+func StreamCommonSideMenu(qw422016 *qt422016.Writer, projectMap map[string]Project, sortApis []string) {
 //line views/sidemenu.html:2
 	qw422016.N().S(`
 
-<!-- <a href="#" aria-current="page" class="inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500">Profile</a>
 
-<a href="#" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Dashboard</a> -->
 
-<div>
-
-    `)
-//line views/sidemenu.html:10
+`)
+//line views/sidemenu.html:6
 	for _, projectApi := range sortApis {
-//line views/sidemenu.html:10
+//line views/sidemenu.html:6
 		qw422016.N().S(`
 
-    `)
-//line views/sidemenu.html:12
-		isCurrentProject := currentProject == projectApi
-
-//line views/sidemenu.html:12
-		qw422016.N().S(`
-    `)
-//line views/sidemenu.html:13
+`)
+//line views/sidemenu.html:8
 		project := projectMap[projectApi]
 
-//line views/sidemenu.html:13
+//line views/sidemenu.html:8
 		qw422016.N().S(`
 
-    <div class="project `)
-//line views/sidemenu.html:15
-		if isCurrentProject {
-//line views/sidemenu.html:15
-			qw422016.N().S(`bg-blue-200`)
-//line views/sidemenu.html:15
-		}
-//line views/sidemenu.html:15
-		qw422016.N().S(`">
-        <a hx-get="`)
-//line views/sidemenu.html:16
+<div x-data="{project:'`)
+//line views/sidemenu.html:10
+		qw422016.E().S(projectApi)
+//line views/sidemenu.html:10
+		qw422016.N().S(`'}" class="project" :class="{'bg-blue-200':activeProject == project}">
+    <a hx-get="`)
+//line views/sidemenu.html:11
 		qw422016.E().V(project.Api)
-//line views/sidemenu.html:16
+//line views/sidemenu.html:11
 		qw422016.N().S(`" hx-target="#contents"
-            class="no-underline text-[25px] text-cyan-700 hover:text-cyan-900 block transition-[0.3s] pl-8 pr-2 py-2">`)
-//line views/sidemenu.html:18
+        class="no-underline text-[25px] text-cyan-700 hover:text-cyan-900 block transition-[0.3s] pl-8 pr-2 py-2 hover:bg-green-200"
+        @click="activeProject = project; activeSection = 'introduction'">`)
+//line views/sidemenu.html:14
 		qw422016.E().S(project.Title)
-//line views/sidemenu.html:18
+//line views/sidemenu.html:14
 		qw422016.N().S(`</a>
-    </div>
 
-
-    `)
+    <!-- Section Menu -->
+    <div x-show="activeProject == project"
+        x-transition:enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 transform order-first"
+        x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-300 transform absolute"
+        x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-12">
+        `)
 //line views/sidemenu.html:22
-		if isCurrentProject {
+		for _, sectionApi := range project.SortApis {
 //line views/sidemenu.html:22
 			qw422016.N().S(`
-    `)
-//line views/sidemenu.html:23
-			for _, sectionApi := range project.SortApis {
-//line views/sidemenu.html:23
-				qw422016.N().S(`
 
-    `)
-//line views/sidemenu.html:25
-				isCurrentSection := currentSection == sectionApi
+        `)
+//line views/sidemenu.html:24
+			section := project.SectionMap[sectionApi]
 
-//line views/sidemenu.html:25
-				qw422016.N().S(`
-    `)
-//line views/sidemenu.html:26
-				section := project.SectionMap[sectionApi]
-
-//line views/sidemenu.html:26
-				qw422016.N().S(`
-
-    <div class="section `)
-//line views/sidemenu.html:28
-				if isCurrentSection {
-//line views/sidemenu.html:28
-					qw422016.N().S(`bg-blue-100`)
-//line views/sidemenu.html:28
-				}
-//line views/sidemenu.html:28
-				qw422016.N().S(`">
-        <a hx-get="`)
-//line views/sidemenu.html:29
-				qw422016.E().V(projectApi)
-//line views/sidemenu.html:29
-				qw422016.N().S(`/`)
-//line views/sidemenu.html:29
-				qw422016.E().V(sectionApi)
-//line views/sidemenu.html:29
-				qw422016.N().S(`" hx-target="#contents"
-            class="no-underline text-[20px] text-cyan-700 hover:text-cyan-900 block transition-[0.3s] pl-12 pr-2 py-2">`)
-//line views/sidemenu.html:31
-				qw422016.E().S(section.Title)
-//line views/sidemenu.html:31
-				qw422016.N().S(`</a>
-    </div>
-    `)
-//line views/sidemenu.html:33
-			}
-//line views/sidemenu.html:33
+//line views/sidemenu.html:24
 			qw422016.N().S(`
-    `)
-//line views/sidemenu.html:34
+
+        <div x-data="{section:'`)
+//line views/sidemenu.html:26
+			qw422016.E().S(sectionApi)
+//line views/sidemenu.html:26
+			qw422016.N().S(`'}"
+            class="section transition ease-out duration-1000 hover:bg-orange-200"
+            :class="activeSection == section ? 'bg-blue-100' :'bg-teal-300'" @click="activeSection = section;">
+            <a hx-get="`)
+//line views/sidemenu.html:29
+			qw422016.E().V(projectApi)
+//line views/sidemenu.html:29
+			qw422016.N().S(`/`)
+//line views/sidemenu.html:29
+			qw422016.E().V(sectionApi)
+//line views/sidemenu.html:29
+			qw422016.N().S(`" hx-target="#contents"
+                class="no-underline text-[20px] text-cyan-700 hover:text-cyan-900 block transition-[0.3s] pl-12 pr-2 py-2">`)
+//line views/sidemenu.html:31
+			qw422016.E().S(section.Title)
+//line views/sidemenu.html:31
+			qw422016.N().S(`</a>
+        </div>
+        `)
+//line views/sidemenu.html:33
 		}
-//line views/sidemenu.html:34
+//line views/sidemenu.html:33
 		qw422016.N().S(`
-
-    `)
-//line views/sidemenu.html:36
-	}
-//line views/sidemenu.html:36
-	qw422016.N().S(`
+    </div>
 
 </div>
 
 `)
-//line views/sidemenu.html:40
+//line views/sidemenu.html:38
+	}
+//line views/sidemenu.html:38
+	qw422016.N().S(`
+
+
+
+`)
+//line views/sidemenu.html:42
 }
 
-//line views/sidemenu.html:40
-func WriteCommonSideMenu(qq422016 qtio422016.Writer, projectMap map[string]Project, sortApis []string, currentProject string, currentSection string) {
-//line views/sidemenu.html:40
+//line views/sidemenu.html:42
+func WriteCommonSideMenu(qq422016 qtio422016.Writer, projectMap map[string]Project, sortApis []string) {
+//line views/sidemenu.html:42
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line views/sidemenu.html:40
-	StreamCommonSideMenu(qw422016, projectMap, sortApis, currentProject, currentSection)
-//line views/sidemenu.html:40
+//line views/sidemenu.html:42
+	StreamCommonSideMenu(qw422016, projectMap, sortApis)
+//line views/sidemenu.html:42
 	qt422016.ReleaseWriter(qw422016)
-//line views/sidemenu.html:40
+//line views/sidemenu.html:42
 }
 
-//line views/sidemenu.html:40
-func CommonSideMenu(projectMap map[string]Project, sortApis []string, currentProject string, currentSection string) string {
-//line views/sidemenu.html:40
+//line views/sidemenu.html:42
+func CommonSideMenu(projectMap map[string]Project, sortApis []string) string {
+//line views/sidemenu.html:42
 	qb422016 := qt422016.AcquireByteBuffer()
-//line views/sidemenu.html:40
-	WriteCommonSideMenu(qb422016, projectMap, sortApis, currentProject, currentSection)
-//line views/sidemenu.html:40
+//line views/sidemenu.html:42
+	WriteCommonSideMenu(qb422016, projectMap, sortApis)
+//line views/sidemenu.html:42
 	qs422016 := string(qb422016.B)
-//line views/sidemenu.html:40
+//line views/sidemenu.html:42
 	qt422016.ReleaseByteBuffer(qb422016)
-//line views/sidemenu.html:40
+//line views/sidemenu.html:42
 	return qs422016
-//line views/sidemenu.html:40
+//line views/sidemenu.html:42
 }

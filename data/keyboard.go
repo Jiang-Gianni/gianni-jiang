@@ -3,12 +3,12 @@ package data
 import "github.com/Jiang-Gianni/gianni-jiang/views"
 
 const (
-	KeyboardFirst  = "first"
-	KeyboardSecond = "second"
+	KeyboardIntroduction = "introduction"
+	KeyboardSecond       = "second"
 )
 
 var keyboardSort = []string{
-	KeyboardFirst,
+	KeyboardIntroduction,
 	KeyboardSecond,
 }
 
@@ -16,13 +16,9 @@ var Keyboard = views.Project{
 	Title:          "My Custom Keyboard",
 	Api:            KeyboardApi,
 	SortApis:       keyboardSort,
-	DefaultSection: KeyboardFirst,
+	DefaultSection: KeyboardIntroduction,
 	SectionMap: map[string]views.Section{
-		KeyboardFirst: {
-			Title: "First Keyboard",
-		},
-		KeyboardSecond: {
-			Title: "Second Keyboard",
-		},
+		KeyboardIntroduction: WebsiteIntroductionContents,
+		KeyboardSecond:       WebsiteCockroachDBContents,
 	},
 }

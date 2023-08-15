@@ -1,4 +1,4 @@
-{% func Index(projectMap map[string]Project, sortApis []string, currentProject string, currentSection string) %}
+{% func Index(projectMap map[string]Project, sortApis []string) %}
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -22,13 +22,13 @@
 
 <body>
 
-    <div class="flex">
-        <div id="side-menu" class="h-screen bg-teal-300 transition-[0.5s] pt-[30px] w-1/6">
-            {%= CommonSideMenu(projectMap, sortApis, currentProject, currentSection)%}
+    <div class="flex overflow-auto" x-data="{activeProject:'website', activeSection:'introduction'}">
+        <div id="side-menu" class="bg-teal-300 pt-[30px] w-1/6">
+            {%= CommonSideMenu(projectMap, sortApis)%}
         </div>
 
-        <div id="contents" class="h-screen transition-[0.5s] w-5/6 text-center pt-[30px]">
-            {%= CommonContents(projectMap[currentProject].SectionMap[currentSection])%}
+        <div id="contents" class="h-screen w-5/6 text-center pt-[30px] overflow-auto">
+            {%= CommonContents(projectMap["website"].SectionMap["introduction"])%}
         </div>
     </div>
 

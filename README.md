@@ -33,7 +33,3 @@ npm i -g nodemon
 ```make
 make nodemon
 ```
-
-[arst](https://www.cockroachlabs.com/)
-
-**`arst`**

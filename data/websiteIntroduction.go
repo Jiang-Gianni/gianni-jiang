@@ -8,7 +8,7 @@ var WebsiteIntroductionContents = views.Section{
 		{
 			TextList: []string{
 				"This is a website that i made to showcase my projects.",
-				"You can jump directly to the section of the project you want to see by clicking on the menu on the left.",
+				"You can jump directly to the section of the project you want to see by clicking the menu on the left.",
 			},
 		},
 		{
@@ -30,7 +30,7 @@ var WebsiteIntroductionContents = views.Section{
 		{
 			TextList: []string{
 				"I am still missing a P and a T to finally complete the CHATGPT stack.",
-				"If you have some ideas let me know.",
+				"If you have some ideas that I might like let me know.",
 			},
 		},
 	},

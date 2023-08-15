@@ -13,8 +13,8 @@
 </ul>
 {% endfunc %}
 
-{% func Link(href string, text string) %}
-<a href="{%s href %}">{%s text %}</a>
+{% func Link(href string, text string, target string) %}
+<a href="{%s href %}" target="{%s target %}">{%s text %}</a>
 {% endfunc %}
 
 {% func Code(text string) %}

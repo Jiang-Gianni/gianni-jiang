@@ -26,7 +26,7 @@ func ErrorHandler(c *fiber.Ctx, err error) error {
 }
 
 func (s *Server) GetIndex(c *fiber.Ctx) error {
-	views.WriteIndex(c, data.ProjectMap, data.SortApis, data.Website.Api, data.WebsiteIntroduction)
+	views.WriteIndex(c, data.ProjectMap, data.SortApis)
 	return SetHtmlContentType(c)
 }
 

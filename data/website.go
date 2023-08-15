@@ -4,21 +4,27 @@ import "github.com/Jiang-Gianni/gianni-jiang/views"
 
 const (
 	WebsiteIntroduction = "introduction"
-	WebsiteSecond       = "cockroachdb"
+	WebsiteCockroachDB  = "cockroachdb"
+	WebsiteHTMX         = "htmx"
+	WebsiteAlpineJS     = "alpinejs"
 )
 
 var websiteSort = []string{
 	WebsiteIntroduction,
-	WebsiteSecond,
+	WebsiteCockroachDB,
+	WebsiteHTMX,
+	WebsiteAlpineJS,
 }
 
 var Website = views.Project{
-	Title:          "This Website",
+	Title:          "Website",
 	Api:            WebsiteApi,
 	SortApis:       websiteSort,
 	DefaultSection: WebsiteIntroduction,
 	SectionMap: map[string]views.Section{
 		WebsiteIntroduction: WebsiteIntroductionContents,
-		WebsiteSecond:       WebsiteCockroachDBContents,
+		WebsiteCockroachDB:  WebsiteCockroachDBContents,
+		WebsiteHTMX:         WebsiteHTMXContents,
+		WebsiteAlpineJS:     WebsiteAlpineJSContents,
 	},
 }

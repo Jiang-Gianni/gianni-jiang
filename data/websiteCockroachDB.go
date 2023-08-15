@@ -6,7 +6,7 @@ var WebsiteCockroachDBContents = views.Section{
 	Title: "CockroachDB",
 	Contents: []views.Content{
 		{
-			RawHtml: views.Link("https://www.cockroachlabs.com/", "https://www.cockroachlabs.com/"),
+			RawHtml: views.Link("https://www.cockroachlabs.com/", "Link", "_blank"),
 		},
 		{
 			TextList: []string{
@@ -15,14 +15,22 @@ var WebsiteCockroachDBContents = views.Section{
 		},
 		{
 			TextList: []string{
-				"Great serverless free base plan (10 GB and 50M request units per month) and the database cluster can be created in different regions in the world (only one in Europe at the moment of writing).",
+				"I am using the database for some CRUD operations of a demo Todo application and some feedbacks.",
+				"I am not using it to store all this text contents, since I feel it would be rather bothersome to update a table rows for each content change.",
 			},
 		},
 		{
 			TextList: []string{
-				"I am using the database for some CRUD operations of a demo Todo application and some feedbacks.",
-				"I am not currently using it to store all this text contents, since I feel it would be rather bothersome to update the database for each content change.",
+				"With Cockroach DB the database cluster can be created in different regions in the world and they offer a great serverless free base plan: 10 GB and 50M request units per month.",
 			},
+		},
+		{
+			TextList: []string{
+				"(Un)fortunately this website won't get many views and I won't ever reach that cap, so I don't have to worry about it...",
+			},
+		},
+		{
+			Img: "./assets/website/harold.jpg",
 		},
 	},
 }
