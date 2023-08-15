@@ -26,7 +26,7 @@ var WebsiteCockroachDBContents = views.Section{
 		},
 		{
 			TextList: []string{
-				"(Un)fortunately this website won't get many views and I won't ever reach that cap, so I don't have to worry about it...",
+				"(Un)fortunately this website won't get many views and I won't ever reach that cap, so I don't have to worry about it.",
 			},
 		},
 		{

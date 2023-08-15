@@ -48,7 +48,7 @@ func StreamCommonSideMenu(qw422016 *qt422016.Writer, projectMap map[string]Proje
 //line views/sidemenu.html:11
 		qw422016.N().S(`" hx-target="#contents"
         class="no-underline text-[25px] text-cyan-700 hover:text-cyan-900 block transition-[0.3s] pl-8 pr-2 py-2 hover:bg-green-200"
-        @click="activeProject = project; activeSection = 'introduction'">`)
+        x-on:click="activeProject = project; activeSection = 'introduction'">`)
 //line views/sidemenu.html:14
 		qw422016.E().S(project.Title)
 //line views/sidemenu.html:14
@@ -79,7 +79,7 @@ func StreamCommonSideMenu(qw422016 *qt422016.Writer, projectMap map[string]Proje
 //line views/sidemenu.html:26
 			qw422016.N().S(`'}"
             class="section transition ease-out duration-1000 hover:bg-orange-200"
-            :class="activeSection == section ? 'bg-blue-100' :'bg-teal-300'" @click="activeSection = section;">
+            :class="activeSection == section ? 'bg-blue-100' :'bg-teal-300'" x-on:click="activeSection = section;">
             <a hx-get="`)
 //line views/sidemenu.html:29
 			qw422016.E().V(projectApi)

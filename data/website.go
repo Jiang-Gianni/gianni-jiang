@@ -7,6 +7,8 @@ const (
 	WebsiteCockroachDB  = "cockroachdb"
 	WebsiteHTMX         = "htmx"
 	WebsiteAlpineJS     = "alpinejs"
+	WebsiteTailwindCSS  = "tailwindcss"
+	WebsiteGo           = "go"
 )
 
 var websiteSort = []string{
@@ -14,6 +16,8 @@ var websiteSort = []string{
 	WebsiteCockroachDB,
 	WebsiteHTMX,
 	WebsiteAlpineJS,
+	WebsiteTailwindCSS,
+	WebsiteGo,
 }
 
 var Website = views.Project{
@@ -26,5 +30,7 @@ var Website = views.Project{
 		WebsiteCockroachDB:  WebsiteCockroachDBContents,
 		WebsiteHTMX:         WebsiteHTMXContents,
 		WebsiteAlpineJS:     WebsiteAlpineJSContents,
+		WebsiteTailwindCSS:  WebsiteTailwindCSSContents,
+		WebsiteGo:           WebsiteGoContents,
 	},
 }

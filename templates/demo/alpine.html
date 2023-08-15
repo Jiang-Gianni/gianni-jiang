@@ -15,14 +15,23 @@
 {% func AlpineCountToggle() %}
 <br>
 <strong>Count Toggle Transitions</strong>
-<div x-data="{ open: false, count: 0 }" class="transition ease-out duration-1000 bg-orange-200 bg-green-200"
-    hx-ext="class-tools" classes="toggle bg-green-200:1s, toggle bg-orange-200:1s">
-    <button @click="open = ! open;" x-text="open?'Hide':'Show'" class="btn btn-primary"></button>
-    <br>
-    <button @click="count++;" class="btn btn-secondary">Count</button>
-    <br>
-    <div x-show="open" x-transition>
-        <span x-text="'Count is ' + count "></span>
+
+<div hx-ext="class-tools">
+    <div hx-ext="class-tools" :class="{'bg-green-200':true, 'bg-orange-200':false}">
+        <div classes="toggle bg-green-200:1s, toggle bg-orange-200:1s" x-data="{ open: false, count: 0 }"
+            class="transition duration-700">
+
+            <button @click="open = ! open;" x-text="open?'Hide':'Show'" class="btn btn-primary"></button>
+            <br>
+
+            <button @click="count++;" class="btn btn-secondary">Count</button>
+            <br>
+
+            <div x-show="open" x-transition>
+                <span x-text="'Count is ' + count "></span>
+            </div>
+
+        </div>
     </div>
 </div>
 <br>

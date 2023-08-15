@@ -241,3 +241,46 @@ func Strong(text string) string {
 	return qs422016
 //line views/render.html:26
 }
+
+//line views/render.html:28
+func StreamImg(qw422016 *qt422016.Writer, src string) {
+//line views/render.html:28
+	qw422016.N().S(`
+<img class="mx-auto h-full" src="`)
+//line views/render.html:29
+	qw422016.E().S(src)
+//line views/render.html:29
+	qw422016.N().S(`" alt="`)
+//line views/render.html:29
+	qw422016.E().S(src)
+//line views/render.html:29
+	qw422016.N().S(`">
+`)
+//line views/render.html:30
+}
+
+//line views/render.html:30
+func WriteImg(qq422016 qtio422016.Writer, src string) {
+//line views/render.html:30
+	qw422016 := qt422016.AcquireWriter(qq422016)
+//line views/render.html:30
+	StreamImg(qw422016, src)
+//line views/render.html:30
+	qt422016.ReleaseWriter(qw422016)
+//line views/render.html:30
+}
+
+//line views/render.html:30
+func Img(src string) string {
+//line views/render.html:30
+	qb422016 := qt422016.AcquireByteBuffer()
+//line views/render.html:30
+	WriteImg(qb422016, src)
+//line views/render.html:30
+	qs422016 := string(qb422016.B)
+//line views/render.html:30
+	qt422016.ReleaseByteBuffer(qb422016)
+//line views/render.html:30
+	return qs422016
+//line views/render.html:30
+}

@@ -78,15 +78,11 @@ func StreamCommonContents(qw422016 *qt422016.Writer, section Section) {
 		if content.Img != "" {
 //line views/contents.html:22
 			qw422016.N().S(`
-    <img class="mx-auto h-full" src="`)
+    `)
 //line views/contents.html:23
-			qw422016.E().S(content.Img)
+			StreamImg(qw422016, content.Img)
 //line views/contents.html:23
-			qw422016.N().S(`" alt="`)
-//line views/contents.html:23
-			qw422016.E().S(content.Img)
-//line views/contents.html:23
-			qw422016.N().S(`">
+			qw422016.N().S(`
     <br>
     `)
 //line views/contents.html:25

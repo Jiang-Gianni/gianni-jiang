@@ -10,7 +10,7 @@
 <div x-data="{project:'{%s projectApi %}'}" class="project" :class="{'bg-blue-200':activeProject == project}">
     <a hx-get="{%v project.Api %}" hx-target="#contents"
         class="no-underline text-[25px] text-cyan-700 hover:text-cyan-900 block transition-[0.3s] pl-8 pr-2 py-2 hover:bg-green-200"
-        @click="activeProject = project; activeSection = 'introduction'">{%s
+        x-on:click="activeProject = project; activeSection = 'introduction'">{%s
         project.Title %}</a>
 
     <!-- Section Menu -->
@@ -25,7 +25,7 @@
 
         <div x-data="{section:'{%s sectionApi %}'}"
             class="section transition ease-out duration-1000 hover:bg-orange-200"
-            :class="activeSection == section ? 'bg-blue-100' :'bg-teal-300'" @click="activeSection = section;">
+            :class="activeSection == section ? 'bg-blue-100' :'bg-teal-300'" x-on:click="activeSection = section;">
             <a hx-get="{%v projectApi %}/{%v sectionApi %}" hx-target="#contents"
                 class="no-underline text-[20px] text-cyan-700 hover:text-cyan-900 block transition-[0.3s] pl-12 pr-2 py-2">{%s
                 section.Title %}</a>
