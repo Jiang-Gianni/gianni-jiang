@@ -37,14 +37,12 @@ func (s *Server) RegisterHandlers() {
 
 	s.App.Static("/assets", "./assets")
 
-	// s.App.Get("/todo", s.GetTodo)
-	// s.App.Get("/todo:id", s.GetTodoId)
-	// s.App.Post("/todo:id", s.PostTodoId)
-	// s.App.Delete("/todo:id", s.DeleteTodoId)
-	// s.App.Get("/todo/new", s.GetTodoNew)
-	// s.App.Post("/todo", s.PostTodo)
-
-	// s.App.Get("/alpine", s.GetAlpine)
+	s.App.Get("/todo", s.GetTodo)
+	s.App.Get("/todo:id", s.GetTodoId)
+	s.App.Post("/todo:id", s.PostTodoId)
+	s.App.Delete("/todo:id", s.DeleteTodoId)
+	s.App.Get("/todo/new", s.GetTodoNew)
+	s.App.Post("/todo", s.PostTodo)
 
 	s.App.Get("/", s.GetIndex)
 	s.App.Get("/:project", s.GetProject)

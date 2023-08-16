@@ -9,6 +9,7 @@ const (
 	WebsiteAlpineJS     = "alpinejs"
 	WebsiteTailwindCSS  = "tailwindcss"
 	WebsiteGo           = "go"
+	WebsiteTodo         = "demo"
 )
 
 var websiteSort = []string{
@@ -18,6 +19,7 @@ var websiteSort = []string{
 	WebsiteAlpineJS,
 	WebsiteTailwindCSS,
 	WebsiteGo,
+	WebsiteTodo,
 }
 
 var Website = views.Project{
@@ -32,5 +34,6 @@ var Website = views.Project{
 		WebsiteAlpineJS:     WebsiteAlpineJSContents,
 		WebsiteTailwindCSS:  WebsiteTailwindCSSContents,
 		WebsiteGo:           WebsiteGoContents,
+		WebsiteTodo:         WebsiteDemoTodoContents,
 	},
 }

@@ -13,7 +13,7 @@ func (s *Server) GetTodo(c *fiber.Ctx) error {
 	if err != nil {
 		return ErrorHandler(c, err)
 	}
-	views.WriteTodoMain(c, todos)
+	views.WriteTodoTable(c, todos)
 	return SetHtmlContentType(c)
 }
 
