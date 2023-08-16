@@ -4,21 +4,21 @@ import "github.com/Jiang-Gianni/gianni-jiang/views"
 
 const (
 	KeyboardIntroduction = "introduction"
-	KeyboardSecond       = "second"
+	KeyboardSixty        = "sixty"
 )
 
 var keyboardSort = []string{
 	KeyboardIntroduction,
-	KeyboardSecond,
+	KeyboardSixty,
 }
 
 var Keyboard = views.Project{
-	Title:          "My Custom Keyboard",
+	Title:          "Custom Keyboard",
 	Api:            KeyboardApi,
 	SortApis:       keyboardSort,
 	DefaultSection: KeyboardIntroduction,
 	SectionMap: map[string]views.Section{
-		KeyboardIntroduction: WebsiteIntroductionContents,
-		KeyboardSecond:       WebsiteCockroachDBContents,
+		KeyboardIntroduction: KeyboardIntroductionContents,
+		KeyboardSixty:        KeyboardSixtyContents,
 	},
 }

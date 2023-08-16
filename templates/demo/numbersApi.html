@@ -1,0 +1,24 @@
+{% import "strconv" %}
+{% func NumbersApi() %}
+<div class="flex justify-center gap-20 p-4">
+    <button hx-get="number" hx-target="#numbers-api" class="btn btn-accent">
+        Random
+    </button>
+</div>
+
+<div id="numbers-api" class="transition"></div>
+{% endfunc %}
+
+{% func NumbersApiResponse(n int, contents string) %}
+<div id="numbers-api" class="flex justify-center gap-20">
+
+    <div class="card w-96" x-data="{number:{%s strconv.Itoa(n) %}}"
+        :class="{'bg-green-200':number % 2 === 0, 'bg-orange-200':number % 2 !== 0}">
+        <div class="card-body">
+            <h2 class="card-title">Number {%s strconv.Itoa(n) %}</h2>
+            <p>{%s contents %}</p>
+        </div>
+    </div>
+
+</div>
+{% endfunc %}

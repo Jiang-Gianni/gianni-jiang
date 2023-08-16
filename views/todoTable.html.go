@@ -21,7 +21,7 @@ var (
 )
 
 //line views/todoTable.html:2
-func StreamTodoTable(qw422016 *qt422016.Writer, todos []db.GetAllTodoRow) {
+func StreamTodoTable(qw422016 *qt422016.Writer, todos []db.GetAllTodosRow) {
 //line views/todoTable.html:2
 	qw422016.N().S(`
 
@@ -88,7 +88,7 @@ func StreamTodoTable(qw422016 *qt422016.Writer, todos []db.GetAllTodoRow) {
 }
 
 //line views/todoTable.html:34
-func WriteTodoTable(qq422016 qtio422016.Writer, todos []db.GetAllTodoRow) {
+func WriteTodoTable(qq422016 qtio422016.Writer, todos []db.GetAllTodosRow) {
 //line views/todoTable.html:34
 	qw422016 := qt422016.AcquireWriter(qq422016)
 //line views/todoTable.html:34
@@ -99,7 +99,7 @@ func WriteTodoTable(qq422016 qtio422016.Writer, todos []db.GetAllTodoRow) {
 }
 
 //line views/todoTable.html:34
-func TodoTable(todos []db.GetAllTodoRow) string {
+func TodoTable(todos []db.GetAllTodosRow) string {
 //line views/todoTable.html:34
 	qb422016 := qt422016.AcquireByteBuffer()
 //line views/todoTable.html:34

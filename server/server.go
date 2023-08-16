@@ -44,8 +44,11 @@ func (s *Server) RegisterHandlers() {
 	s.App.Get("/todo/new", s.GetTodoNew)
 	s.App.Post("/todo", s.PostTodo)
 
+	s.App.Get("/number", s.GetNumbersApi)
+
 	s.App.Get("/", s.GetIndex)
 	s.App.Get("/:project", s.GetProject)
 	s.App.Get("/:project/:section", s.GetProject)
+	s.App.Post("/:project/feedback", s.PostFeedback)
 
 }

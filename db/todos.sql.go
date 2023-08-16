@@ -35,16 +35,16 @@ func (q *Queries) DeleteTodo(ctx context.Context, id int32) error {
 	return err
 }
 
-const getAllTodo = `-- name: GetAllTodo :many
+const getAllTodos = `-- name: GetAllTodos :many
 select
     t.id, t.description, t.status_id, t.created_on,
     s.description as status
 from todos t
 join status s on
-t.status_id = s.id
+    t.status_id = s.id
 `
 
-type GetAllTodoRow struct {
+type GetAllTodosRow struct {
 	ID          int32
 	Description string
 	StatusID    int32
@@ -52,15 +52,15 @@ type GetAllTodoRow struct {
 	Status      string
 }
 
-func (q *Queries) GetAllTodo(ctx context.Context) ([]GetAllTodoRow, error) {
-	rows, err := q.db.QueryContext(ctx, getAllTodo)
+func (q *Queries) GetAllTodos(ctx context.Context) ([]GetAllTodosRow, error) {
+	rows, err := q.db.QueryContext(ctx, getAllTodos)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
-	var items []GetAllTodoRow
+	var items []GetAllTodosRow
 	for rows.Next() {
-		var i GetAllTodoRow
+		var i GetAllTodosRow
 		if err := rows.Scan(
 			&i.ID,
 			&i.Description,

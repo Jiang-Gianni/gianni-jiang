@@ -8,13 +8,17 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func (s *Server) GetTodo(c *fiber.Ctx) error {
-	todos, err := s.Query.GetAllTodo(s.Context)
+func (s *Server) WriteTodosTable(c *fiber.Ctx) error {
+	todos, err := s.Query.GetAllTodos(s.Context)
 	if err != nil {
 		return ErrorHandler(c, err)
 	}
 	views.WriteTodoTable(c, todos)
 	return SetHtmlContentType(c)
+}
+
+func (s *Server) GetTodo(c *fiber.Ctx) error {
+	return s.WriteTodosTable(c)
 }
 
 func (s *Server) GetTodoId(c *fiber.Ctx) error {
@@ -52,12 +56,7 @@ func (s *Server) PostTodoId(c *fiber.Ctx) error {
 	if err != nil {
 		return ErrorHandler(c, err)
 	}
-	todos, err := s.Query.GetAllTodo(s.Context)
-	if err != nil {
-		return ErrorHandler(c, err)
-	}
-	views.WriteTodoTable(c, todos)
-	return SetHtmlContentType(c)
+	return s.WriteTodosTable(c)
 }
 
 func (s *Server) DeleteTodoId(c *fiber.Ctx) error {
@@ -69,12 +68,7 @@ func (s *Server) DeleteTodoId(c *fiber.Ctx) error {
 	if err != nil {
 		return ErrorHandler(c, err)
 	}
-	todos, err := s.Query.GetAllTodo(s.Context)
-	if err != nil {
-		return ErrorHandler(c, err)
-	}
-	views.WriteTodoTable(c, todos)
-	return SetHtmlContentType(c)
+	return s.WriteTodosTable(c)
 }
 
 func (s *Server) GetTodoNew(c *fiber.Ctx) error {
@@ -88,10 +82,5 @@ func (s *Server) PostTodo(c *fiber.Ctx) error {
 	if err != nil {
 		return ErrorHandler(c, err)
 	}
-	todos, err := s.Query.GetAllTodo(s.Context)
-	if err != nil {
-		return ErrorHandler(c, err)
-	}
-	views.WriteTodoTable(c, todos)
-	return SetHtmlContentType(c)
+	return s.WriteTodosTable(c)
 }

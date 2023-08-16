@@ -8,6 +8,13 @@ import (
 	"time"
 )
 
+type Feedback struct {
+	ID          int32
+	Project     string
+	Description string
+	CreatedOn   time.Time
+}
+
 type Status struct {
 	ID          int32
 	Description string

@@ -20,7 +20,7 @@ join status s on
 t.status_id = s.id
 where t.id = $1 limit 1;
 
--- name: GetAllTodo :many
+-- name: GetAllTodos :many
 select
     t.*,
     s.description as status

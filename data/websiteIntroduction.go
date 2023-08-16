@@ -7,7 +7,7 @@ var WebsiteIntroductionContents = views.Section{
 	Contents: []views.Content{
 		{
 			TextList: []string{
-				"This is a website that i made to showcase my projects.",
+				"This is a website that i made to showcase the projects that I want to showcase.",
 				"You can jump directly to the section of the project you want to see by clicking the menu on the left.",
 			},
 		},

@@ -14,7 +14,7 @@ var SortApis = []string{
 
 var ProjectSort = []string{
 	KeyboardIntroduction,
-	KeyboardSecond,
+	KeyboardSixty,
 }
 
 var ProjectMap = map[string]views.Project{

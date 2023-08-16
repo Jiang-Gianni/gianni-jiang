@@ -21,35 +21,45 @@ var (
 func StreamTodoDemo(qw422016 *qt422016.Writer) {
 //line views/todo.html:1
 	qw422016.N().S(`
-<div id="todo-contents" hx-get="todo" hx-trigger="load once"
+<div hx-get="todo" hx-trigger="load once" hx-indicator=".loading" id="todo-contents"
     class="flex flex-col overflow-x-auto sm:-mx-6 lg:-mx-8 min-w-full py-2 sm:px-6 lg:px-8 overflow-hidden">
+
+    <div class="loading animate-spin inline w-16 h-16 mx-auto">
+        `)
+//line views/todo.html:6
+	StreamLoadingSvg(qw422016)
+//line views/todo.html:6
+	qw422016.N().S(`
+    </div>
+
 </div>
+
 `)
-//line views/todo.html:5
+//line views/todo.html:11
 }
 
-//line views/todo.html:5
+//line views/todo.html:11
 func WriteTodoDemo(qq422016 qtio422016.Writer) {
-//line views/todo.html:5
+//line views/todo.html:11
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line views/todo.html:5
+//line views/todo.html:11
 	StreamTodoDemo(qw422016)
-//line views/todo.html:5
+//line views/todo.html:11
 	qt422016.ReleaseWriter(qw422016)
-//line views/todo.html:5
+//line views/todo.html:11
 }
 
-//line views/todo.html:5
+//line views/todo.html:11
 func TodoDemo() string {
-//line views/todo.html:5
+//line views/todo.html:11
 	qb422016 := qt422016.AcquireByteBuffer()
-//line views/todo.html:5
+//line views/todo.html:11
 	WriteTodoDemo(qb422016)
-//line views/todo.html:5
+//line views/todo.html:11
 	qs422016 := string(qb422016.B)
-//line views/todo.html:5
+//line views/todo.html:11
 	qt422016.ReleaseByteBuffer(qb422016)
-//line views/todo.html:5
+//line views/todo.html:11
 	return qs422016
-//line views/todo.html:5
+//line views/todo.html:11
 }

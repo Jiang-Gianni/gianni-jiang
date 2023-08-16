@@ -92,7 +92,7 @@ func StreamTodoId(qw422016 *qt422016.Writer, todo db.GetTodoRow, statusList []db
 
 <div class="flex justify-center gap-20 p-4">
 
-    <button hx-get="todo" hx-target="#todo-contents" class="btn btn-ghost">Back</button>
+    <button hx-get="todo" hx-target="#todo-contents" class="btn btn-secondary">Back</button>
     `)
 //line views/todoId.html:37
 	if todo.ID != 0 {
