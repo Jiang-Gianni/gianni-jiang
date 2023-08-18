@@ -25,6 +25,7 @@ func New() Server {
 	if err != nil {
 		log.Fatal(err)
 	}
+	postgres.Ping()
 	query := db.New(postgres)
 	return Server{
 		App:     fiber.New(),

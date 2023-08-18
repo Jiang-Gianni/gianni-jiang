@@ -3,6 +3,7 @@ package data
 import views "github.com/Jiang-Gianni/gianni-jiang/views"
 
 const (
+	FeedbackApi = "feedback"
 	WebsiteApi  = "website"
 	KeyboardApi = "keyboard"
 )
@@ -14,7 +15,7 @@ var SortApis = []string{
 
 var ProjectSort = []string{
 	KeyboardIntroduction,
-	KeyboardSixty,
+	KeyboardSplit,
 }
 
 var ProjectMap = map[string]views.Project{

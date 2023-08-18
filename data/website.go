@@ -12,7 +12,6 @@ const (
 	WebsiteTodo         = "demo"
 	WebsiteNumber       = "number"
 	WebsiteDeploy       = "deploy"
-	WebsiteFeedback     = "feedback"
 )
 
 var websiteSort = []string{
@@ -25,7 +24,7 @@ var websiteSort = []string{
 	WebsiteTodo,
 	WebsiteNumber,
 	WebsiteDeploy,
-	WebsiteFeedback,
+	FeedbackApi,
 }
 
 var Website = views.Project{
@@ -43,6 +42,6 @@ var Website = views.Project{
 		WebsiteTodo:         WebsiteDemoTodoContents,
 		WebsiteNumber:       WebsiteDemoNumberContents,
 		WebsiteDeploy:       WebsiteDeployContents,
-		WebsiteFeedback:     WebsiteFeedbackContents,
+		FeedbackApi:         FeedbackContents(WebsiteApi),
 	},
 }

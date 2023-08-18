@@ -30,7 +30,7 @@ var WebsiteCockroachDBContents = views.Section{
 			},
 		},
 		{
-			Img: "./assets/website/harold.jpg",
+			RawHtml: views.WebsiteHarold(),
 		},
 	},
 }

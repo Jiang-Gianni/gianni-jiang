@@ -34,11 +34,10 @@ func StreamIndex(qw422016 *qt422016.Writer, projectMap map[string]Project, sortA
     <script type="text/javascript" src="./assets/htmx.js"></script>
     <script async type="text/javascript" src="./assets/alpine.js"></script>
     <script type="text/javascript" src="./assets/classtools.js"></script>
-    <link rel="manifest" href="./assets/manifest.json" />
     <link rel="icon" type="image/x-icon" href="./assets/favicon/favicon.ico">
 
     <!-- Debug -->
-    <script>htmx.logAll()</script>
+    <!-- <script>htmx.logAll()</script> -->
 
 </head>
 
@@ -47,17 +46,17 @@ func StreamIndex(qw422016 *qt422016.Writer, projectMap map[string]Project, sortA
     <div class="flex overflow-auto" x-data="{activeProject:'website', activeSection:'introduction'}">
         <div id="side-menu" class="bg-teal-300 pt-[30px] w-1/6">
             `)
-//line views/index.html:27
+//line views/index.html:26
 	StreamCommonSideMenu(qw422016, projectMap, sortApis)
-//line views/index.html:27
+//line views/index.html:26
 	qw422016.N().S(`
         </div>
 
         <div id="contents" class="h-screen w-5/6 text-center pt-[30px] overflow-auto">
             `)
-//line views/index.html:31
+//line views/index.html:30
 	StreamCommonContents(qw422016, projectMap["website"].SectionMap["introduction"])
-//line views/index.html:31
+//line views/index.html:30
 	qw422016.N().S(`
         </div>
     </div>
@@ -69,31 +68,31 @@ func StreamIndex(qw422016 *qt422016.Writer, projectMap map[string]Project, sortA
 
 </html>
 `)
-//line views/index.html:41
+//line views/index.html:40
 }
 
-//line views/index.html:41
+//line views/index.html:40
 func WriteIndex(qq422016 qtio422016.Writer, projectMap map[string]Project, sortApis []string) {
-//line views/index.html:41
+//line views/index.html:40
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line views/index.html:41
+//line views/index.html:40
 	StreamIndex(qw422016, projectMap, sortApis)
-//line views/index.html:41
+//line views/index.html:40
 	qt422016.ReleaseWriter(qw422016)
-//line views/index.html:41
+//line views/index.html:40
 }
 
-//line views/index.html:41
+//line views/index.html:40
 func Index(projectMap map[string]Project, sortApis []string) string {
-//line views/index.html:41
+//line views/index.html:40
 	qb422016 := qt422016.AcquireByteBuffer()
-//line views/index.html:41
+//line views/index.html:40
 	WriteIndex(qb422016, projectMap, sortApis)
-//line views/index.html:41
+//line views/index.html:40
 	qs422016 := string(qb422016.B)
-//line views/index.html:41
+//line views/index.html:40
 	qt422016.ReleaseByteBuffer(qb422016)
-//line views/index.html:41
+//line views/index.html:40
 	return qs422016
-//line views/index.html:41
+//line views/index.html:40
 }

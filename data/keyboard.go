@@ -4,12 +4,19 @@ import "github.com/Jiang-Gianni/gianni-jiang/views"
 
 const (
 	KeyboardIntroduction = "introduction"
-	KeyboardSixty        = "sixty"
+	KeyboardSplit        = "split"
+	KeyboardCircuit      = "circuit"
+	KeyboardAssembling   = "assembling"
+	KeyboardFirmware     = "firmware"
 )
 
 var keyboardSort = []string{
 	KeyboardIntroduction,
-	KeyboardSixty,
+	KeyboardSplit,
+	KeyboardCircuit,
+	KeyboardAssembling,
+	KeyboardFirmware,
+	FeedbackApi,
 }
 
 var Keyboard = views.Project{
@@ -19,6 +26,10 @@ var Keyboard = views.Project{
 	DefaultSection: KeyboardIntroduction,
 	SectionMap: map[string]views.Section{
 		KeyboardIntroduction: KeyboardIntroductionContents,
-		KeyboardSixty:        KeyboardSixtyContents,
+		KeyboardSplit:        KeyboardSplitContents,
+		KeyboardCircuit:      KeyboardCircuitContents,
+		KeyboardAssembling:   KeyboardAssemblingContents,
+		KeyboardFirmware:     KeyboardFirmwareContents,
+		FeedbackApi:          FeedbackContents(KeyboardApi),
 	},
 }

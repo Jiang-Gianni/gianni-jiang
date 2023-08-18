@@ -112,33 +112,35 @@ func StreamCommonContents(qw422016 *qt422016.Writer, section Section) {
 	}
 //line views/contents.html:32
 	qw422016.N().S(`
+
+    <br>
 </div>
 `)
-//line views/contents.html:34
+//line views/contents.html:36
 }
 
-//line views/contents.html:34
+//line views/contents.html:36
 func WriteCommonContents(qq422016 qtio422016.Writer, section Section) {
-//line views/contents.html:34
+//line views/contents.html:36
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line views/contents.html:34
+//line views/contents.html:36
 	StreamCommonContents(qw422016, section)
-//line views/contents.html:34
+//line views/contents.html:36
 	qt422016.ReleaseWriter(qw422016)
-//line views/contents.html:34
+//line views/contents.html:36
 }
 
-//line views/contents.html:34
+//line views/contents.html:36
 func CommonContents(section Section) string {
-//line views/contents.html:34
+//line views/contents.html:36
 	qb422016 := qt422016.AcquireByteBuffer()
-//line views/contents.html:34
+//line views/contents.html:36
 	WriteCommonContents(qb422016, section)
-//line views/contents.html:34
+//line views/contents.html:36
 	qs422016 := string(qb422016.B)
-//line views/contents.html:34
+//line views/contents.html:36
 	qt422016.ReleaseByteBuffer(qb422016)
-//line views/contents.html:34
+//line views/contents.html:36
 	return qs422016
-//line views/contents.html:34
+//line views/contents.html:36
 }
