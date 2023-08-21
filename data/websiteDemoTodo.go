@@ -9,7 +9,7 @@ var WebsiteDemoTodoContents = views.Section{
 	Contents: []views.Content{
 		{
 			TextList: []string{
-				"Todo apps have become the 'Hello World' of web development. Here is a demo that operates on the database.",
+				"Here is a demo of a Todo application that operates on the database.",
 				"Click the 'Create New Todo' button to generate a new Todo or click one of the Todos in the table to update / delete it.",
 			},
 		},

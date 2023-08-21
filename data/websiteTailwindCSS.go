@@ -30,8 +30,15 @@ var WebsiteTailwindCSSContents = views.Section{
 		{
 			Subtitle: "CSS Size",
 			TextList: []string{
-				"You could import the entire Tailwind library of utility classes but Tailwind offers a tool to optimize for production so that only the used classes are imported.",
-				"I am thinking of maybe trying to write a similar tool in Go in the future (without the features that I don't need), since I don't like to have the npm files (package.json, package-lock.json) and the node_modules folder in my project just to use the Tailwind optimizer.",
+				"It is possible to import the entire Tailwind library of utility classes by CDN but Tailwind offers a tool to optimize for production so that only the used classes are imported.",
+			},
+		},
+		{
+			Subtitle: "DaysiUI",
+			RawHtml:  views.Link("https://daisyui.com/", "https://daisyui.com/", "_blank"),
+			TextList: []string{
+				"I am also using DaysiUI which is a library of prestyled components based on Tailwind CSS.",
+				"For example, the buttons in the 'Demo Todo' section are styled by simply adding the 'btn' class.",
 			},
 		},
 	},

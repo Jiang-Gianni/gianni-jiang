@@ -11,13 +11,13 @@ var WebsiteAlpineJSContents = views.Section{
 		{
 			TextList: []string{
 				"Alpine JS is a lightweight JavaScript framework: the compressed bundle is around 16 kB in size.",
-				"I decided to add this tool to the stack because in certain cases I felt like it was way easier to track the state of the application on the client rather than on the server.",
+				"I decided to add this tool to the stack because in certain cases I felt like it was way easier to track the state of part of the application on the client rather than on the server.",
 			},
 		},
 		{
 			TextList: []string{
 				"Alpine JS lets you sprinkle a little bit of JavaScript where it is needed: if you inspect the menu element on the left (right click + 'Inspect') you'll see some attributes like 'x-data', 'x-show', 'x-on' and 'x-transition'.",
-				"After a click HTMX updates the content on the right and Alpine JS updates the local state of the side menu, so that the current project and section have a different background color.",
+				"After a click on the side menu, HTMX updates the content on the right and Alpine JS updates the local state of the menu, so that the current project and section are highlighted with different background color.",
 			},
 		},
 		{

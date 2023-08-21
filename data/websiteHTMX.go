@@ -26,11 +26,11 @@ var WebsiteHTMXContents = views.Section{
 		{
 			Subtitle: "JavaScript size",
 			TextList: []string{
-				"There is no need on the client side to manipulate the response, no need to parse any json: this means that the page will load faster since there is no need for any javascript (other than htmx) to be executed.",
+				"There is no need on the client side to manipulate the response, no json to be parsed: this means that the page will load faster since there is no javascript (other than htmx) to be executed.",
 				"If you press F12, go to 'Network', and press Ctrl + Shift + R to hard reload the page you'll see that the JavaScript size for htmx is around 15 kB.",
-				"Now try to do the same on the ",
+				"Now try to do the same on",
 				"https://create-react-template.vercel.app",
-				"You'll notice almost 50 kB of JavaScript. Try to imagine what happens as the app scales: with React (or other similar frameworks) even more JavaScript will be shipped to the client.",
+				"You'll notice almost 50 kB of JavaScript. Imagine what happens as the app scales: with React (or other similar SPA frameworks) even more JavaScript will be shipped to the client.",
 			},
 		},
 		{
@@ -44,7 +44,7 @@ var WebsiteHTMXContents = views.Section{
 		{
 			Subtitle: "Server Side Rendering",
 			TextList: []string{
-				"With HTMX the web contents are rendered on the server which means that you can use any backend language as long as the HTML contents are delivered to the client through the HTTP response. Many languages also offer some templating tools, so generating the needed HTML with the data obtained from the database or other services gets easier.",
+				"With HTMX the web contents are rendered on the server which means that it is possible to use any backend language as long as the HTML contents are delivered to the client through the HTTP response. Many languages also offer some templating tools, so generating the needed HTML with the data obtained from the database or other services gets easier.",
 			},
 		},
 	},
