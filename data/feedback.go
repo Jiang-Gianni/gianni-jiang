@@ -8,7 +8,7 @@ var FeedbackContents = func(project string) views.Section {
 		Contents: []views.Content{
 			{
 				TextList: []string{
-					"Feel free to leave some feedbacks and suggestions so that I can make some improvements.",
+					"Feel free to leave some feedbacks and suggestions so that I can make improvements.",
 				},
 			},
 			{

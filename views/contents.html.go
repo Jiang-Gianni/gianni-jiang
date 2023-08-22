@@ -24,7 +24,7 @@ func StreamCommonContents(qw422016 *qt422016.Writer, section Section) {
 <div class="transition-opacity duration-500 ease-in-out opacity-0" hx-ext="class-tools" classes="remove opacity-0:0s">
 
     <!-- Section Title -->
-    <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
+    <h1>
         `)
 //line views/contents.html:6
 	qw422016.E().S(section.Title)
@@ -44,7 +44,7 @@ func StreamCommonContents(qw422016 *qt422016.Writer, section Section) {
 		if content.Subtitle != "" {
 //line views/contents.html:12
 			qw422016.N().S(`
-    <h2 class="text-4xl font-extrabold">`)
+    <h2>`)
 //line views/contents.html:13
 			qw422016.E().S(content.Subtitle)
 //line views/contents.html:13

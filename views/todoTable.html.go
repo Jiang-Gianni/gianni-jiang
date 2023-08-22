@@ -32,7 +32,7 @@ func StreamTodoTable(qw422016 *qt422016.Writer, todos []db.GetAllTodosRow) {
     </button>
 </div>
 
-<h1 class="self-center font-bold pt-7">Todo List</h1>
+<h3 class="text-teal-600 self-center font-bold pt-7">Todo List</h3>
 
 <table class="min-w-full text-left text-sm font-light">
     <thead class="border-b font-medium dark:border-neutral-500">

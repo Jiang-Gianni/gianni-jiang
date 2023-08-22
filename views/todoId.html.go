@@ -24,11 +24,10 @@ var (
 func StreamTodoId(qw422016 *qt422016.Writer, todo db.GetTodoRow, statusList []db.Status) {
 //line views/todoId.html:2
 	qw422016.N().S(`
-
 <div x-data="{description:'`)
-//line views/todoId.html:4
+//line views/todoId.html:3
 	qw422016.E().S(todo.Description)
-//line views/todoId.html:4
+//line views/todoId.html:3
 	qw422016.N().S(`'}">
     <div class="justify-center flex gap-20">
 
@@ -39,17 +38,17 @@ func StreamTodoId(qw422016 *qt422016.Writer, todo db.GetTodoRow, statusList []db
             </label>
             <textarea name="description" type="text" placeholder="Todo Description" x-model="description"
                 class="textarea textarea-bordered textarea-lg w-full max-w-xs">`)
-//line views/todoId.html:13
+//line views/todoId.html:12
 	qw422016.E().S(todo.Description)
-//line views/todoId.html:13
+//line views/todoId.html:12
 	qw422016.N().S(`</textarea>
         </div>
 
         <!-- Status -->
         `)
-//line views/todoId.html:17
+//line views/todoId.html:16
 	if len(statusList) > 0 {
-//line views/todoId.html:17
+//line views/todoId.html:16
 		qw422016.N().S(`
         <div class="form-control w-full max-w-xs">
             <label class="label">
@@ -57,40 +56,40 @@ func StreamTodoId(qw422016 *qt422016.Writer, todo db.GetTodoRow, statusList []db
             </label>
             <select class="select select-bordered" name="status_id">
                 `)
-//line views/todoId.html:23
+//line views/todoId.html:22
 		for _, status := range statusList {
-//line views/todoId.html:23
+//line views/todoId.html:22
 			qw422016.N().S(`
                 <option value="`)
-//line views/todoId.html:24
+//line views/todoId.html:23
 			qw422016.E().V(status.ID)
-//line views/todoId.html:24
+//line views/todoId.html:23
 			qw422016.N().S(`" `)
-//line views/todoId.html:24
+//line views/todoId.html:23
 			if status.ID == todo.StatusID {
-//line views/todoId.html:24
+//line views/todoId.html:23
 				qw422016.N().S(`selected`)
-//line views/todoId.html:24
+//line views/todoId.html:23
 			}
-//line views/todoId.html:24
+//line views/todoId.html:23
 			qw422016.N().S(`>`)
-//line views/todoId.html:25
+//line views/todoId.html:24
 			qw422016.E().S(status.Description)
-//line views/todoId.html:26
+//line views/todoId.html:25
 			qw422016.N().S(`
                 </option>
 
                 `)
-//line views/todoId.html:29
+//line views/todoId.html:28
 		}
-//line views/todoId.html:29
+//line views/todoId.html:28
 		qw422016.N().S(`
             </select>
         </div>
         `)
-//line views/todoId.html:32
+//line views/todoId.html:31
 	}
-//line views/todoId.html:32
+//line views/todoId.html:31
 	qw422016.N().S(`
 
     </div>
@@ -99,17 +98,17 @@ func StreamTodoId(qw422016 *qt422016.Writer, todo db.GetTodoRow, statusList []db
 
         <button hx-get="todo" hx-target="#todo-contents" class="btn btn-secondary">Back</button>
         `)
-//line views/todoId.html:39
+//line views/todoId.html:38
 	if todo.ID != 0 {
-//line views/todoId.html:39
+//line views/todoId.html:38
 		qw422016.N().S(`
         <!-- Updating or deleting a Todo -->
 
 
         <button hx-post="todo`)
-//line views/todoId.html:43
+//line views/todoId.html:42
 		qw422016.E().V(todo.ID)
-//line views/todoId.html:43
+//line views/todoId.html:42
 		qw422016.N().S(`" hx-include="[name='description'], [name='status_id']"
             hx-target="#todo-contents" class="btn btn-primary btn-wide"
             :class="{'btn-disabled':description==''}">Update</button>
@@ -122,9 +121,9 @@ func StreamTodoId(qw422016 *qt422016.Writer, todo db.GetTodoRow, statusList []db
                 <div class="modal-action">
                     <button class="btn">Cancel</button>
                     <button hx-delete="todo`)
-//line views/todoId.html:54
+//line views/todoId.html:53
 		qw422016.E().V(todo.ID)
-//line views/todoId.html:54
+//line views/todoId.html:53
 		qw422016.N().S(`" hx-target="#todo-contents"
                         class="btn btn-accent">Confirm</button>
                 </div>
@@ -134,9 +133,9 @@ func StreamTodoId(qw422016 *qt422016.Writer, todo db.GetTodoRow, statusList []db
 
 
         `)
-//line views/todoId.html:62
+//line views/todoId.html:61
 	} else {
-//line views/todoId.html:62
+//line views/todoId.html:61
 		qw422016.N().S(`
 
         <!-- Creating a new Todo -->
@@ -147,39 +146,39 @@ func StreamTodoId(qw422016 *qt422016.Writer, todo db.GetTodoRow, statusList []db
         </button>
 
         `)
-//line views/todoId.html:71
+//line views/todoId.html:70
 	}
-//line views/todoId.html:71
+//line views/todoId.html:70
 	qw422016.N().S(`
     </div>
 </div>
 
 `)
-//line views/todoId.html:75
+//line views/todoId.html:74
 }
 
-//line views/todoId.html:75
+//line views/todoId.html:74
 func WriteTodoId(qq422016 qtio422016.Writer, todo db.GetTodoRow, statusList []db.Status) {
-//line views/todoId.html:75
+//line views/todoId.html:74
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line views/todoId.html:75
+//line views/todoId.html:74
 	StreamTodoId(qw422016, todo, statusList)
-//line views/todoId.html:75
+//line views/todoId.html:74
 	qt422016.ReleaseWriter(qw422016)
-//line views/todoId.html:75
+//line views/todoId.html:74
 }
 
-//line views/todoId.html:75
+//line views/todoId.html:74
 func TodoId(todo db.GetTodoRow, statusList []db.Status) string {
-//line views/todoId.html:75
+//line views/todoId.html:74
 	qb422016 := qt422016.AcquireByteBuffer()
-//line views/todoId.html:75
+//line views/todoId.html:74
 	WriteTodoId(qb422016, todo, statusList)
-//line views/todoId.html:75
+//line views/todoId.html:74
 	qs422016 := string(qb422016.B)
-//line views/todoId.html:75
+//line views/todoId.html:74
 	qt422016.ReleaseByteBuffer(qb422016)
-//line views/todoId.html:75
+//line views/todoId.html:74
 	return qs422016
-//line views/todoId.html:75
+//line views/todoId.html:74
 }
