@@ -218,6 +218,8 @@ This tool generates Go structs and query functions with types and fields that ar
 
 What amazes me is that <!-- class="bg-green-200" -->**it also auto generates custom Go structs in case the query consists of joining multiple tables to match the fields and types**: you end up having the structs and the query functions with type safety without writing any Go boilerplate code.
 
+<br>
+
 **<!-- target="_blank" -->[https://github.com/sqlc-dev/sqlc](https://github.com/sqlc-dev/sqlc)**
 
 <br>

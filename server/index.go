@@ -43,3 +43,8 @@ func (s *Server) GetProject(c *fiber.Ctx) error {
 	views.WriteCommonContents(c, project.SectionMap[sectionApi])
 	return SetHtmlContentType(c)
 }
+
+func (s *Server) GetGmtResult(c *fiber.Ctx) error {
+	views.WriteGmtResult(c)
+	return SetHtmlContentType(c)
+}

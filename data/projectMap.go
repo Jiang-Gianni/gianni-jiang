@@ -6,19 +6,17 @@ const (
 	FeedbackApi = "feedback"
 	WebsiteApi  = "website"
 	KeyboardApi = "keyboard"
+	GmtApi      = "gmt"
 )
 
 var SortApis = []string{
 	WebsiteApi,
 	KeyboardApi,
-}
-
-var ProjectSort = []string{
-	KeyboardIntroduction,
-	KeyboardSplit,
+	GmtApi,
 }
 
 var ProjectMap = map[string]views.Project{
 	WebsiteApi:  Website,
 	KeyboardApi: Keyboard,
+	GmtApi:      Gmt,
 }

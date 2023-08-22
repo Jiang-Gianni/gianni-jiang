@@ -323,6 +323,7 @@ func StreamWebsiteGo(qw422016 *qt422016.Writer) {
 <p>This tool generates Go structs and query functions with types and fields that are mapped using the input sql files that contain the <code>create table</code> commands and the queries.</p>
 <br>
 <p>What amazes me is that <strong  class="bg-green-200" >it also auto generates custom Go structs in case the query consists of joining multiple tables to match the fields and types</strong>: you end up having the structs and the query functions with type safety without writing any Go boilerplate code.</p>
+<br>
 <p><strong><a href="https://github.com/sqlc-dev/sqlc"  target="_blank" >https://github.com/sqlc-dev/sqlc</a></strong></p>
 <br>
 <h2 id="quicktemplate">quicktemplate</h2>
@@ -339,40 +340,40 @@ func StreamWebsiteGo(qw422016 *qt422016.Writer) {
 <br>
 <p>The drawback is that the intermediate parsing step (from <code>html</code> to <code>go</code>) is always needed even for small on-the-fly changes, reason why I am autorestarting the server on file save using <a href="https://nodemon.io/"><strong><code>nodemon</code></strong></a>.</p>
 `)
-//line views/website.html:149
+//line views/website.html:150
 }
 
-//line views/website.html:149
+//line views/website.html:150
 func WriteWebsiteGo(qq422016 qtio422016.Writer) {
-//line views/website.html:149
+//line views/website.html:150
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line views/website.html:149
+//line views/website.html:150
 	StreamWebsiteGo(qw422016)
-//line views/website.html:149
+//line views/website.html:150
 	qt422016.ReleaseWriter(qw422016)
-//line views/website.html:149
+//line views/website.html:150
 }
 
-//line views/website.html:149
+//line views/website.html:150
 func WebsiteGo() string {
-//line views/website.html:149
+//line views/website.html:150
 	qb422016 := qt422016.AcquireByteBuffer()
-//line views/website.html:149
+//line views/website.html:150
 	WriteWebsiteGo(qb422016)
-//line views/website.html:149
+//line views/website.html:150
 	qs422016 := string(qb422016.B)
-//line views/website.html:149
+//line views/website.html:150
 	qt422016.ReleaseByteBuffer(qb422016)
-//line views/website.html:149
+//line views/website.html:150
 	return qs422016
-//line views/website.html:149
+//line views/website.html:150
 }
 
 // <h1 id="demo-todo">Demo Todo</h1>
 
-//line views/website.html:151
+//line views/website.html:152
 func StreamWebsiteDemoTodo(qw422016 *qt422016.Writer) {
-//line views/website.html:151
+//line views/website.html:152
 	qw422016.N().S(`
 <p>Here is a demo of a Todo application that operates on the database.</p>
 <br>
@@ -381,89 +382,89 @@ to <strong  class="btn btn-primary" >update</strong>
 or to <strong  class="btn btn-error" >delete</strong> it.</p>
 <br>
 `)
-//line views/website.html:158
+//line views/website.html:159
 	StreamTodoDemo(qw422016)
-//line views/website.html:158
+//line views/website.html:159
 	qw422016.N().S(`
 `)
-//line views/website.html:159
+//line views/website.html:160
 }
 
-//line views/website.html:159
+//line views/website.html:160
 func WriteWebsiteDemoTodo(qq422016 qtio422016.Writer) {
-//line views/website.html:159
+//line views/website.html:160
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line views/website.html:159
+//line views/website.html:160
 	StreamWebsiteDemoTodo(qw422016)
-//line views/website.html:159
+//line views/website.html:160
 	qt422016.ReleaseWriter(qw422016)
-//line views/website.html:159
+//line views/website.html:160
 }
 
-//line views/website.html:159
+//line views/website.html:160
 func WebsiteDemoTodo() string {
-//line views/website.html:159
+//line views/website.html:160
 	qb422016 := qt422016.AcquireByteBuffer()
-//line views/website.html:159
+//line views/website.html:160
 	WriteWebsiteDemoTodo(qb422016)
-//line views/website.html:159
+//line views/website.html:160
 	qs422016 := string(qb422016.B)
-//line views/website.html:159
+//line views/website.html:160
 	qt422016.ReleaseByteBuffer(qb422016)
-//line views/website.html:159
+//line views/website.html:160
 	return qs422016
-//line views/website.html:159
+//line views/website.html:160
 }
 
 // <h1 id="demo-number">Demo Number</h1>
 
-//line views/website.html:161
+//line views/website.html:162
 func StreamWebsiteDemoNumber(qw422016 *qt422016.Writer) {
-//line views/website.html:161
+//line views/website.html:162
 	qw422016.N().S(`
 <p>Simple HTTP call that retrieves some trivia from <a href="http://numbersapi.com"  class="bg-blue-200" ><strong>numbersapi</strong></a> of a random number.</p>
 <br>
 `)
-//line views/website.html:164
+//line views/website.html:165
 	StreamNumbersApi(qw422016)
-//line views/website.html:164
+//line views/website.html:165
 	qw422016.N().S(`
 <br>
 `)
-//line views/website.html:166
+//line views/website.html:167
 }
 
-//line views/website.html:166
+//line views/website.html:167
 func WriteWebsiteDemoNumber(qq422016 qtio422016.Writer) {
-//line views/website.html:166
+//line views/website.html:167
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line views/website.html:166
+//line views/website.html:167
 	StreamWebsiteDemoNumber(qw422016)
-//line views/website.html:166
+//line views/website.html:167
 	qt422016.ReleaseWriter(qw422016)
-//line views/website.html:166
+//line views/website.html:167
 }
 
-//line views/website.html:166
+//line views/website.html:167
 func WebsiteDemoNumber() string {
-//line views/website.html:166
+//line views/website.html:167
 	qb422016 := qt422016.AcquireByteBuffer()
-//line views/website.html:166
+//line views/website.html:167
 	WriteWebsiteDemoNumber(qb422016)
-//line views/website.html:166
+//line views/website.html:167
 	qs422016 := string(qb422016.B)
-//line views/website.html:166
+//line views/website.html:167
 	qt422016.ReleaseByteBuffer(qb422016)
-//line views/website.html:166
+//line views/website.html:167
 	return qs422016
-//line views/website.html:166
+//line views/website.html:167
 }
 
 // <h1 id="deploy">Deploy</h1>
 
-//line views/website.html:168
+//line views/website.html:169
 func StreamWebsiteDeploy(qw422016 *qt422016.Writer) {
-//line views/website.html:168
+//line views/website.html:169
 	qw422016.N().S(`
 <p>In order to make this app publicly available, I needed to deploy it somewhere.</p>
 <br>
@@ -483,31 +484,31 @@ func StreamWebsiteDeploy(qw422016 *qt422016.Writer) {
 <p><strong><a href="https://render.com/docs"  target="_blank" >https://render.com/docs</a></strong></p>
 <br>
 `)
-//line views/website.html:186
+//line views/website.html:187
 }
 
-//line views/website.html:186
+//line views/website.html:187
 func WriteWebsiteDeploy(qq422016 qtio422016.Writer) {
-//line views/website.html:186
+//line views/website.html:187
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line views/website.html:186
+//line views/website.html:187
 	StreamWebsiteDeploy(qw422016)
-//line views/website.html:186
+//line views/website.html:187
 	qt422016.ReleaseWriter(qw422016)
-//line views/website.html:186
+//line views/website.html:187
 }
 
-//line views/website.html:186
+//line views/website.html:187
 func WebsiteDeploy() string {
-//line views/website.html:186
+//line views/website.html:187
 	qb422016 := qt422016.AcquireByteBuffer()
-//line views/website.html:186
+//line views/website.html:187
 	WriteWebsiteDeploy(qb422016)
-//line views/website.html:186
+//line views/website.html:187
 	qs422016 := string(qb422016.B)
-//line views/website.html:186
+//line views/website.html:187
 	qt422016.ReleaseByteBuffer(qb422016)
-//line views/website.html:186
+//line views/website.html:187
 	return qs422016
-//line views/website.html:186
+//line views/website.html:187
 }

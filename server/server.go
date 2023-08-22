@@ -46,6 +46,7 @@ func (s *Server) RegisterHandlers() {
 	s.App.Post("/todo", s.PostTodo)
 
 	s.App.Get("/number", s.GetNumbersApi)
+	s.App.Get("/gmt/result", s.GetGmtResult)
 
 	s.App.Get("/", s.GetIndex)
 	s.App.Get("/:project", s.GetProject)
