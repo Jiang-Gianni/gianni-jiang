@@ -1,0 +1,137 @@
+<style>.mx-auto{margin-left:auto;margin-right:auto}.h-full{height:100%}.animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}@keyframes pulse{50%{opacity:.5}}.bg-gray-200{--bg-opacity:1;background-color:#edf2f7;background-color:rgba(237,242,247,var(--bg-opacity))}.bg-orange-200{--bg-opacity:1;background-color:#feebc8;background-color:rgba(254,235,200,var(--bg-opacity))}.bg-green-200{--bg-opacity:1;background-color:#c6f6d5;background-color:rgba(198,246,213,var(--bg-opacity))}.bg-red-200{--bg-opacity:1;background-color:#fed7d7;background-color:rgba(254,215,215,var(--bg-opacity))}.bg-indigo-200{--bg-opacity:1;background-color:#c3dafe;background-color:rgba(195,218,254,var(--bg-opacity))}.bg-teal-200{--bg-opacity:1;background-color:#b2f5ea;background-color:rgba(178,245,234,var(--bg-opacity))}.bg-purple-200{--bg-opacity:1;background-color:#e9d8fd;background-color:rgba(233,216,253,var(--bg-opacity))}.bg-yellow-200{--bg-opacity:1;background-color:#fefcbf;background-color:rgba(254,252,191,var(--bg-opacity))}.bg-blue-200{--bg-opacity:1;background-color:#bee3f8;background-color:rgba(190,227,248,var(--bg-opacity))}.bg-pink-200{--bg-opacity:1;background-color:#fed7e2;background-color:rgba(254,215,226,var(--bg-opacity))}</style>
+<h1 id="introduction">Introduction</h1>
+{% func KeyboardIntroduction() %}
+<p>If you are typing a couple (or more) hours a day, you should consider investing in a keyboard that would make typing more comfortable. It can be beneficial in the long run.</p>
+<p>That's why right after I started my first job I decided to buy a mechanical keyboard: REDRAGON Fizz K617.</p>
+<br>
+<h2 id="redragon-fizz-k617">REDRAGON Fizz K617</h2>
+<p>It is a 60% keyboard, meaning that it only has around 60% of the keys of a normal full keyboard: you need to press a combination of keys to access the missing keys.</p>
+<p>I changed the default switches into some silent light ones (Outemu silent white) so that I would feel less fatigue and I wouldn't make much noise from typing.</p>
+<h2 id="colemak">Colemak</h2>
+<p>Since I wanted to make typing even more ergonomic, I also decided to learn to type with a new layout: Colemak.</p>
+<p>It is one of the layouts optimized for touch typing in English: the most frequently used letters are moved to the home row to make them easier to press.</p>
+<br>
+<p><strong><img src="./assets/keyboard/colemak.png" alt="Colemak"  class="mx-auto h-full" ></strong></p>
+<br>
+<p>Compared to the Qwerty layout, the positions of 17 of keys are changed but common shortcuts (like copy-pasta) are kept the same.</p>
+<br>
+<p><a href="https://colemak.com/"><strong  class="animate-pulse bg-gray-200" >https://colemak.com/</strong></a></p>
+<br>
+{% endfunc %}
+<h1 id="split">Split</h1>
+{% func KeyboardSplit() %}
+<p>After a year and a half of using the 60% keyboard, I looked into some <strong  class="bg-orange-200" >custom split ergonomical keyboards</strong>.</p>
+<p>There are some issues (kind of) that split keyboard can improve.</p>
+<br>
+<h2 id="arms-position">Arms position</h2>
+<p>To type on a normal keyboard you have to bend your arms toward the center of your desk where the keyboard is located.</p>
+<p>With a split keyboard, your hands stay at shoulder distance (or at any distance of your preference) with <strong  class="bg-green-200" >less strain on your shoulder and arms</strong>.</p>
+<br>
+<h2 id="keys-position">Keys position</h2>
+<p><strong  class="bg-red-200" >In a normal keyboard, the keys are staggered</strong> and in order to touch type you should assign a set of keys to each of your fingers.</p>
+<p><strong><img src="./assets/keyboard/layout.png" alt="Qwerty Layout"  class="mx-auto h-full" ></strong></p>
+<br>
+<p>Try to type the word 'byzantine'. Did you find it comfortable to type the first three letters?</p>
+<br>
+<p>Because of the staggered layout, B and Y are the furthest keys assigned to index fingers (relative to F and J which are the base positions). I often misstype their Colemak counterparts because of it.</p>
+<br>
+<p>According to many touch typing guides, letter Z should be pressed with the left pinkie.</p>
+<p>Both hands are already bent toward the center, why strain the outer and weakest finger even more to type Z? I find it more comfortable to type it with my left ring finger.</p>
+<br>
+<p><strong  class="bg-indigo-200" >Split keyboards can be ortholinear</strong>, solving these problems.</p>
+<br>
+<h2 id="less-keys-and-less-finger-movements">Less keys and less finger movements</h2>
+<p>Some split keyboard are 40%. The idea is that there are multiple layers that can be activated by holding some specific keys.</p>
+<p>This means that you need to press multiple keys together to type, for example, symbols or to use the F keys (F1, F2, F3 etc).</p>
+<br>
+<p>The advantage is that <strong  class="bg-teal-200" >the fingers don't move that much to type</strong>: it is easier (and even faster once you memorize the combo) to press a coupe of keys in easy to reach positions than to press a single key that requires to lift and move the entire hand (some example: backspace, enter and arrows).</p>
+{% endfunc %}
+<h1 id="circuit">Circuit</h1>
+{% func KeyboardCircuit() %}
+<p>After learning how these custom split keyboards works <strong  class="bg-teal-200" >I decided to design and to build one myself</strong> and I used it to type all of this.</p>
+<br>
+<p>There are two types of custom keyboard based on how the circuit is made: hand wired and PCB (printed circuit board).</p>
+<p>I went for the latter as it looked easier.</p>
+<br>
+<p>The tools I used to generate the PCB design are <a href="https://github.com/ergogen/ergogen"><strong  class="bg-purple-200 animate-pulse" >ergogen</strong></a> (to draw the layout) and <a href="https://www.kicad.org/"><strong  class="bg-orange-200 animate-pulse" >KiCad</strong></a> (to generate the electrical connections and the final production files) and the basic design was <strong><del>stolen</del></strong> inspired by another custom keyboard:
+<a href="https://github.com/tompi/cheapino"><strong  class="bg-yellow-200 animate-pulse" >cheapino</strong></a></p>
+<br>
+<p>I also added two rotary encoders in the design but after the assembling they didn't work as I wanted it to and I now feel like they aren't that necessary to have.</p>
+<br>
+<h2 id="design">Design</h2>
+<p>Here is my final circuit design.</p>
+<p>It can be used <strong  class="bg-green-200" >for both left and right splits</strong> and <strong  class="bg-teal-200" >the microcontroller can be installed on either side</strong>.</p>
+<p><strong  class="bg-blue-200" >30 keys in total</strong>, 15 on each side, 3 keys assigned to each finger.</p>
+<br>
+<p><strong><img src="./assets/keyboard/kicad.png" alt="Circuit"  class="mx-auto h-full" ></strong></p>
+<br>
+<h2 id="how-it-works">How it works</h2>
+<p>On each key there is a switch that, once pressed, connects the two side electrically and closes the circuit letting the current pass through.</p>
+<br>
+<p>Each side of the switch is connected to a pin of the MCU (<a href="https://www.waveshare.com/wiki/RP2040-Zero"><strong  class="bg-gray-200 animate-pulse" >RP2040 Zero</strong></a> in my case) that elaborates what needs to happen when a specific key is pressed.</p>
+<br>
+<p>Usually the microcontroller has a very limited amount of pins, less than the number of keyboard keys: in order to make it work a diode is connected to each key and a matrix arrangement of the connections is used.</p>
+<p>The standard configuration is to have one pin of the MCU for each of the rows and columns of the keyboard.</p>
+<br>
+<p>On each cycle the MCU scans the pins, checking if there are other pins with a signal. The scanning direction is set to 'row to column' or 'column to row'.</p>
+<p>Each switch is connected to a distinct (row pin, column pin) pair so that it can be identified when pressed.</p>
+<br>
+<p>If (row1, col1) and (row2, col2) keys are pressed at the same time then it is possible for the MCU to also register (row1, col2) or (row2, col1): a diode on each key allows the current to flow only on one direction and prevents this effect called <strong>ghosting</strong>.</p>
+<br>
+<p>Given N number of free MCU pins, the maximum number of keyboard keys that can be registered with a regular matrix scanning method is (N/2)*(N/2) using (N/2) row pins and (N/2) column pins.</p>
+<br>
+<p>This number can be doubled using a <a href="https://kbd.news/The-Japanese-duplex-matrix-1391.html"><strong  class="bg-pink-200 animate-pulse" >duplex matrix</strong></a>: the scanning goes both ways and for each (row, col) pair there are 2 switches.</p>
+<p>The difference between these 2 switches is the orientation of the diodes (row2col or col2row) so that the scanning direction can also be used to identify the pressed key.</p>
+<br>
+<p>An <a href="https://en.wikipedia.org/wiki/Modular_connector#8P8C"><strong  class="bg-amber-200 animate-pulse" >RJ45 cable</strong></a> connects the two side: this allows for 8 connection pins to be used.</p>
+<h2 id="jlcpcb">JLCPCB</h2>
+<p>After finishing the PCB design I needed to have it printed so I uploaded the gerber file to <a href="https://jlcpcb.com/"><strong  class="bg-cyan-200 animate-pulse" >JLCPCB</strong></a>.</p>
+<br>
+<p>I really like their service because they offer a special deal if the PCB is less than 10cm X 10cm in size and I designed the circuit within these constraints.</p>
+<p>The total cost of 5 boards + shipping (to Italy) + taxes was only around 4€.</p>
+<h2 id="aliexpress">Aliexpress</h2>
+<p>The rest of the materials (soldering tools, diodes, switches, keycaps, MCU, cables etc.) were bought from <a href="https://aliexpress.com/"><strong  class="bg-red-200 animate-pulse" >Aliexpress</strong></a></p>
+<p>On Aliexpress there are actually some good quality products at very low prices that would be nearly impossible to find and buy locally.</p>
+{% endfunc %}
+<h1 id="assembling">Assembling</h1>
+{% func KeyboardAssembling() %}
+<p>Here some pictures of the assembling process.</p>
+<br>
+<p><strong><img src="./assets/keyboard/a1.jpg" alt=""  class="mx-auto h-full" ></strong></p>
+<p><strong><img src="./assets/keyboard/a2.jpg" alt=""  class="mx-auto h-full" ></strong></p>
+<p><strong><img src="./assets/keyboard/a3.jpg" alt=""  class="mx-auto h-full" ></strong></p>
+<p><strong><img src="./assets/keyboard/a4.jpg" alt=""  class="mx-auto h-full" ></strong></p>
+<p><strong><img src="./assets/keyboard/a5.jpg" alt=""  class="mx-auto h-full" ></strong></p>
+<p><strong><img src="./assets/keyboard/a6.jpg" alt=""  class="mx-auto h-full" ></strong></p>
+<p><strong><img src="./assets/keyboard/a7.jpg" alt=""  class="mx-auto h-full" ></strong></p>
+<br>
+<p>In the last picture if you are wondering what the extra small little cable is for, well... let's say that there was a <em><strong>Happy Little Accident</strong></em> during the design of the PCB.</p>
+<br>
+<p>An RJ45 PCB connection has 8 pins and they are positioned in 2 staggered rows, as if they were forming a parallelogram.</p>
+<br>
+<p>Since it is not symmetric, <strong  class="bg-teal-200" >I added an extra pin hole</strong> so that the board could be flipped and be used both as left and right split <strong  class="bg-red-200" >but I connected the pinholes to the MCU as if there were 9 available connecting pins while only 8 are effectively in use</strong>.</p>
+{% endfunc %}
+<h1 id="firmware">Firmware</h1>
+{% func KeyboardFirmware() %}
+<p>The last step is to install a firmware so that the MCU can send key presses when a switch is pushed.</p>
+<p>The most widely used firmware for custom keyboard is <a href="https://github.com/qmk/qmk_firmware"><strong  class="bg-indigo-200 animate-pulse" >QMK</strong></a> (based on C)...</p>
+<br>
+<p>... but I decided to go with <a href="https://github.com/picoruby/prk_firmware/wiki/Tutorial"><strong  class="bg-red-200 animate-pulse" >PRK</strong></a> (based on Ruby).</p>
+<br>
+<p>That's the reason I put an image of Poro (from LOL) on the MCU since PORO can also stand for 'Plain Old Ruby Object'</p>
+<br>
+<p>The PRK firmware is very easy to install following the documentation and all that is needed after that is to upload a <code>keymap.rb</code> file that contains the definition of the pins, the matrix and the assigment of the keys.</p>
+<br>
+<h2 id="keymap">Keymap</h2>
+<p>The layout I'm using is basically Colemak but with some modifications.</p>
+<br>
+<p>I am missing the central 6 letter keys assigned to the index fingers which in Colemak are G, D, B, J, H and K (in Qwerty: T, G, B, Y, H, N).</p>
+<br>
+<p>G, D, B and H have replaced comma, dot, slash and semicolons of the standard Colemak, placed on the right side of the keyboard.</p>
+<br>
+<p>J, K, all the numbers, symbols, F keys and navigations have been placed in secondary layers.</p>
+<br>
+<p>In the thumb cluster I have Ctrl, Space, Shift, Backspace and two keys to activate the secondary layers.</p>
+<br>
+<p>Overall I can feel some improvements in my posture when typing.</p>
+{% endfunc %}

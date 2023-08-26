@@ -33,3 +33,48 @@ var Keyboard = views.Project{
 		FeedbackApi:          FeedbackContents(KeyboardApi),
 	},
 }
+
+var KeyboardIntroductionContents = views.Section{
+	Title: "Introduction",
+	Contents: []views.Content{
+		{
+			RawHtml: views.KeyboardIntroduction(),
+		},
+	},
+}
+
+var KeyboardSplitContents = views.Section{
+	Title: "Split Keyboard",
+	Contents: []views.Content{
+		{
+			RawHtml: views.KeyboardSplit(),
+		},
+	},
+}
+
+var KeyboardCircuitContents = views.Section{
+	Title: "Circuit",
+	Contents: []views.Content{
+		{
+			RawHtml: views.KeyboardCircuit(),
+		},
+	},
+}
+
+var KeyboardAssemblingContents = views.Section{
+	Title: "Assembling",
+	Contents: []views.Content{
+		{
+			RawHtml: views.KeyboardAssembling(),
+		},
+	},
+}
+
+var KeyboardFirmwareContents = views.Section{
+	Title: "Firmware",
+	Contents: []views.Content{
+		{
+			RawHtml: views.KeyboardFirmware(),
+		},
+	},
+}
