@@ -62,7 +62,7 @@ With Cockroach DB the database cluster can be created in different regions in th
 
 <br>
 
-(Un)fortunately this website won't get many views and I won't ever reach that cap, so I don't have to worry about it.
+(Un)fortunately this ~~destined to fail~~ website won't get many views and I won't ever reach that cap, so I don't have to worry about it.
 
 <br>
 
@@ -119,7 +119,8 @@ Imagine what happens as the app scales: with React (or other similar SPA framewo
 Another advantage of HTMX is that you just need those 15 kB of JavaScript.
 
 No need for any **`npm install ...`** which can easily cause the local **`node_modules`** folder to exceed 100 MB of size when using frameworks like React.
-![Node Modules](./assets/website/node-modules.png)<!-- class="mx-auto h-full" -->
+
+**![Node Modules](./assets/website/node-modules.png)**<!-- class="mx-auto h-full" -->
 
 <br>
 
@@ -196,7 +197,7 @@ The following displayed element is styled by adding the classes:
 
 It is possible to import the entire Tailwind library of utility classes by CDN but Tailwind offers a tool to optimize for production so that only the used classes are imported.
 
-## DaysiUI
+## DaisyUI
 
 I am also using **[DaisyUI](https://daisyui.com/)**<!-- class="btn btn-accent" target="_blank" --> which is a library of prestyled components based on Tailwind CSS.
 

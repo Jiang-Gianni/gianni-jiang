@@ -29,7 +29,6 @@ func (s *Server) GetNumbersApi(c *fiber.Ctx) error {
 	if err != nil {
 		log.Println(err)
 	}
-	log.Println(string(contents))
 
 	views.WriteNumbersApiResponse(c, n, string(contents))
 	return SetHtmlContentType(c)
