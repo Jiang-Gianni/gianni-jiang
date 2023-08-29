@@ -127,7 +127,7 @@ No need for any **`npm install ...`** which can easily cause the local **`node_m
 
 ## Server Side Rendering
 
-With HTMX the web contents are rendered on the server which means that **it is possible to use any backend language** as long as the HTML contents are delivered to the client through the HTTP response.
+With HTMX the web contents are rendered on the server which means that **it is possible to use any backend language**: all the HTML contents are delivered to the client through the HTTP response.
 
 <br>
 
