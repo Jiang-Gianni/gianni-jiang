@@ -21,7 +21,7 @@ var (
 func StreamTodoDemo(qw422016 *qt422016.Writer) {
 //line views/todo.html:1
 	qw422016.N().S(`
-<div hx-get="todo" hx-trigger="load once" hx-indicator=".loading" id="todo-contents"
+<div hx-get="todo" hx-trigger="load once" id="todo-contents"
     class="flex flex-col overflow-x-auto sm:-mx-6 lg:-mx-8 min-w-full py-2 sm:px-6 lg:px-8 overflow-hidden">
 
     <div class="loading animate-spin inline w-16 h-16 mx-auto">

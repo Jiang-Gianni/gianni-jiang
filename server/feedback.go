@@ -1,19 +1,20 @@
 package server
 
 import (
+	"net/http"
+
 	"github.com/Jiang-Gianni/gianni-jiang/db"
 	"github.com/Jiang-Gianni/gianni-jiang/views"
-	"github.com/gofiber/fiber/v2"
+	"github.com/go-chi/chi/v5"
 )
 
-func (s *Server) PostFeedback(c *fiber.Ctx) error {
+func (s *Server) PostFeedback(w http.ResponseWriter, r *http.Request) {
 	_, err := s.Query.CreateFeedback(s.Context, db.CreateFeedbackParams{
-		Project:     c.Params("project"),
-		Description: c.FormValue("description"),
+		Project:     chi.URLParam(r, "project"),
+		Description: r.FormValue("description"),
 	})
 	if err != nil {
-		return ErrorHandler(c, err)
+		ErrorHandler(w, r, err)
 	}
-	views.WriteSubmitted(c)
-	return SetHtmlContentType(c)
+	views.WriteSubmitted(w)
 }

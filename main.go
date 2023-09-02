@@ -1,9 +1,13 @@
 package main
 
-import "github.com/Jiang-Gianni/gianni-jiang/server"
+import (
+	"net/http"
+
+	"github.com/Jiang-Gianni/gianni-jiang/server"
+)
 
 func main() {
 	s := server.New()
 	s.RegisterHandlers()
-	s.App.Listen(":3000")
+	http.ListenAndServe(":3000", s.Router)
 }

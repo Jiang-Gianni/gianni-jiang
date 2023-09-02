@@ -21,3 +21,6 @@ rename:
 
 gmt:
 	gmt -dir templates/md
+
+doc:
+	qtc -dir docgen -ext md && go run docgen/docgen.go

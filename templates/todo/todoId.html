@@ -1,6 +1,6 @@
 {% import "github.com/Jiang-Gianni/gianni-jiang/db" %}
-{% func TodoId(todo db.GetTodoRow, statusList []db.Status) %}
-<div x-data="{description:'{%s todo.Description %}'}">
+{% func TodoId(todo db.Todo, statusList []db.Status) %}
+<div x-data="{description:`{%s todo.Description %}`}">
     <div class="justify-center flex gap-20">
 
         <!-- Description -->
@@ -35,11 +35,11 @@
     <div class="flex justify-center gap-20 p-4">
 
         <button hx-get="todo" hx-target="#todo-contents" class="btn btn-secondary">Back</button>
+
         {% if todo.ID != 0 %}
         <!-- Updating or deleting a Todo -->
 
-
-        <button hx-post="todo{%v todo.ID %}" hx-include="[name='description'], [name='status_id']"
+        <button hx-post="todo\{%v todo.ID %}" hx-include="[name='description'], [name='status_id']"
             hx-target="#todo-contents" class="btn btn-primary btn-wide"
             :class="{'btn-disabled':description==''}">Update</button>
 
@@ -50,7 +50,7 @@
                 <p class="py-4">Click Confirm to delete this todo. Press ESC key or click Cancel to close</p>
                 <div class="modal-action">
                     <button class="btn">Cancel</button>
-                    <button hx-delete="todo{%v todo.ID %}" hx-target="#todo-contents"
+                    <button hx-delete="todo\{%v todo.ID %}" hx-target="#todo-contents"
                         class="btn btn-accent">Confirm</button>
                 </div>
             </form>

@@ -1,11 +1,11 @@
 package server
 
 import (
+	"net/http"
+
 	"github.com/Jiang-Gianni/gianni-jiang/views"
-	"github.com/gofiber/fiber/v2"
 )
 
-func (s *Server) GetAlpine(c *fiber.Ctx) error {
-	views.WriteAlpineMain(c)
-	return SetHtmlContentType(c)
+func (s *Server) GetAlpine(w http.ResponseWriter, r *http.Request) {
+	views.WriteAlpineMain(w)
 }

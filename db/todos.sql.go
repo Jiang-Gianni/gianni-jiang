@@ -82,32 +82,17 @@ func (q *Queries) GetAllTodos(ctx context.Context) ([]GetAllTodosRow, error) {
 }
 
 const getTodo = `-- name: GetTodo :one
-select
-    t.id, t.description, t.status_id, t.created_on,
-    s.description as status
-from todos t
-join status s on
-t.status_id = s.id
-where t.id = $1 limit 1
+select id, description, status_id, created_on from todos where id = $1 limit 1
 `
 
-type GetTodoRow struct {
-	ID          int32
-	Description string
-	StatusID    int32
-	CreatedOn   time.Time
-	Status      string
-}
-
-func (q *Queries) GetTodo(ctx context.Context, id int32) (GetTodoRow, error) {
+func (q *Queries) GetTodo(ctx context.Context, id int32) (Todo, error) {
 	row := q.db.QueryRowContext(ctx, getTodo, id)
-	var i GetTodoRow
+	var i Todo
 	err := row.Scan(
 		&i.ID,
 		&i.Description,
 		&i.StatusID,
 		&i.CreatedOn,
-		&i.Status,
 	)
 	return i, err
 }

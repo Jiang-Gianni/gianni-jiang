@@ -27,7 +27,7 @@ func StreamTodoTable(qw422016 *qt422016.Writer, todos []db.GetAllTodosRow) {
 
 
 <div class="flex justify-center gap-20 p-4">
-    <button hx-get="todo\new" hx-target="#todo-contents" class="btn btn-accent">
+    <button hx-get="new\todo" hx-target="#todo-contents" class="btn btn-accent">
         Create new Todo
     </button>
 </div>
@@ -49,7 +49,7 @@ func StreamTodoTable(qw422016 *qt422016.Writer, todos []db.GetAllTodosRow) {
 	for _, todo := range todos {
 //line views/todoTable.html:23
 		qw422016.N().S(`
-        <tr hx-get="todo`)
+        <tr hx-get="todo\`)
 //line views/todoTable.html:24
 		qw422016.E().V(todo.ID)
 //line views/todoTable.html:24

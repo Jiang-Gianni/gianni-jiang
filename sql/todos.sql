@@ -12,13 +12,7 @@ create table todos(
 );
 
 -- name: GetTodo :one
-select
-    t.*,
-    s.description as status
-from todos t
-join status s on
-t.status_id = s.id
-where t.id = $1 limit 1;
+select * from todos where id = $1 limit 1;
 
 -- name: GetAllTodos :many
 select

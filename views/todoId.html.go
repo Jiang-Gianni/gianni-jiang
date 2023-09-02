@@ -21,14 +21,20 @@ var (
 )
 
 //line views/todoId.html:2
-func StreamTodoId(qw422016 *qt422016.Writer, todo db.GetTodoRow, statusList []db.Status) {
+func StreamTodoId(qw422016 *qt422016.Writer, todo db.Todo, statusList []db.Status) {
 //line views/todoId.html:2
 	qw422016.N().S(`
-<div x-data="{description:'`)
+<div x-data="{description:`)
+//line views/todoId.html:2
+	qw422016.N().S("`")
 //line views/todoId.html:3
 	qw422016.E().S(todo.Description)
 //line views/todoId.html:3
-	qw422016.N().S(`'}">
+	qw422016.N().S(``)
+//line views/todoId.html:3
+	qw422016.N().S("`")
+//line views/todoId.html:3
+	qw422016.N().S(`}">
     <div class="justify-center flex gap-20">
 
         <!-- Description -->
@@ -97,15 +103,15 @@ func StreamTodoId(qw422016 *qt422016.Writer, todo db.GetTodoRow, statusList []db
     <div class="flex justify-center gap-20 p-4">
 
         <button hx-get="todo" hx-target="#todo-contents" class="btn btn-secondary">Back</button>
+
         `)
-//line views/todoId.html:38
+//line views/todoId.html:39
 	if todo.ID != 0 {
-//line views/todoId.html:38
+//line views/todoId.html:39
 		qw422016.N().S(`
         <!-- Updating or deleting a Todo -->
 
-
-        <button hx-post="todo`)
+        <button hx-post="todo\`)
 //line views/todoId.html:42
 		qw422016.E().V(todo.ID)
 //line views/todoId.html:42
@@ -120,7 +126,7 @@ func StreamTodoId(qw422016 *qt422016.Writer, todo db.GetTodoRow, statusList []db
                 <p class="py-4">Click Confirm to delete this todo. Press ESC key or click Cancel to close</p>
                 <div class="modal-action">
                     <button class="btn">Cancel</button>
-                    <button hx-delete="todo`)
+                    <button hx-delete="todo\`)
 //line views/todoId.html:53
 		qw422016.E().V(todo.ID)
 //line views/todoId.html:53
@@ -158,7 +164,7 @@ func StreamTodoId(qw422016 *qt422016.Writer, todo db.GetTodoRow, statusList []db
 }
 
 //line views/todoId.html:74
-func WriteTodoId(qq422016 qtio422016.Writer, todo db.GetTodoRow, statusList []db.Status) {
+func WriteTodoId(qq422016 qtio422016.Writer, todo db.Todo, statusList []db.Status) {
 //line views/todoId.html:74
 	qw422016 := qt422016.AcquireWriter(qq422016)
 //line views/todoId.html:74
@@ -169,7 +175,7 @@ func WriteTodoId(qq422016 qtio422016.Writer, todo db.GetTodoRow, statusList []db
 }
 
 //line views/todoId.html:74
-func TodoId(todo db.GetTodoRow, statusList []db.Status) string {
+func TodoId(todo db.Todo, statusList []db.Status) string {
 //line views/todoId.html:74
 	qb422016 := qt422016.AcquireByteBuffer()
 //line views/todoId.html:74

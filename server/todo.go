@@ -1,52 +1,61 @@
 package server
 
 import (
+	"context"
+	"net/http"
 	"strconv"
 
 	"github.com/Jiang-Gianni/gianni-jiang/db"
 	"github.com/Jiang-Gianni/gianni-jiang/views"
-	"github.com/gofiber/fiber/v2"
+	"github.com/go-chi/chi/v5"
 )
 
-func (s *Server) WriteTodosTable(c *fiber.Ctx) error {
+func (s *Server) WriteTodosTable(w http.ResponseWriter, r *http.Request) {
 	todos, err := s.Query.GetAllTodos(s.Context)
 	if err != nil {
-		return ErrorHandler(c, err)
+		ErrorHandler(w, r, err)
 	}
-	views.WriteTodoTable(c, todos)
-	return SetHtmlContentType(c)
+	views.WriteTodoTable(w, todos)
 }
 
-func (s *Server) GetTodo(c *fiber.Ctx) error {
-	return s.WriteTodosTable(c)
+func (s *Server) GetTodo(w http.ResponseWriter, r *http.Request) {
+	s.WriteTodosTable(w, r)
 }
 
-func (s *Server) GetTodoId(c *fiber.Ctx) error {
-	id, err := ExtractInt(c, "id")
-	if err != nil {
-		return ErrorHandler(c, err)
+func (s *Server) TodoCtx(next http.Handler) http.Handler {
+	handler := func(w http.ResponseWriter, r *http.Request) {
+		idString := chi.URLParam(r, "todoId")
+		id, err := strconv.Atoi(idString)
+		if err != nil {
+			ErrorHandler(w, r, err)
+		}
+		todo, err := s.Query.GetTodo(r.Context(), int32(id))
+		if err != nil {
+			ErrorHandler(w, r, err)
+		}
+		status, err := s.Query.GetAllStatus(s.Context)
+		if err != nil {
+			ErrorHandler(w, r, err)
+		}
+		ctx := context.WithValue(r.Context(), CtxKeyTodo, todo)
+		ctx = context.WithValue(ctx, CtxKeyStatus, status)
+		next.ServeHTTP(w, r.WithContext(ctx))
 	}
-	todo, err := s.Query.GetTodo(s.Context, int32(id))
-	if err != nil {
-		return ErrorHandler(c, err)
-	}
-	statusList, err := s.Query.GetAllStatus(s.Context)
-	if err != nil {
-		return ErrorHandler(c, err)
-	}
-	views.WriteTodoId(c, todo, statusList)
-	return SetHtmlContentType(c)
+	return http.HandlerFunc(handler)
 }
 
-func (s *Server) PostTodoId(c *fiber.Ctx) error {
-	id, err := ExtractInt(c, "id")
+func (s *Server) GetTodoId(w http.ResponseWriter, r *http.Request) {
+	todo := r.Context().Value(CtxKeyTodo).(db.Todo)
+	status := r.Context().Value(CtxKeyStatus).([]db.Status)
+	views.WriteTodoId(w, todo, status)
+}
+
+func (s *Server) PostTodoId(w http.ResponseWriter, r *http.Request) {
+	id := r.Context().Value(CtxKeyTodo).(db.Todo).ID
+	description := r.FormValue("description")
+	statusId, err := strconv.Atoi(r.FormValue("status_id"))
 	if err != nil {
-		return ErrorHandler(c, err)
-	}
-	description := c.FormValue("description")
-	statusId, err := strconv.Atoi(c.FormValue("status_id"))
-	if err != nil {
-		return err
+		ErrorHandler(w, r, err)
 	}
 	err = s.Query.UpdateTodo(s.Context, db.UpdateTodoParams{
 		ID:          int32(id),
@@ -54,33 +63,29 @@ func (s *Server) PostTodoId(c *fiber.Ctx) error {
 		StatusID:    int32(statusId),
 	})
 	if err != nil {
-		return ErrorHandler(c, err)
+		ErrorHandler(w, r, err)
 	}
-	return s.WriteTodosTable(c)
+	s.WriteTodosTable(w, r)
 }
 
-func (s *Server) DeleteTodoId(c *fiber.Ctx) error {
-	id, err := ExtractInt(c, "id")
+func (s *Server) DeleteTodoId(w http.ResponseWriter, r *http.Request) {
+	id := r.Context().Value(CtxKeyTodo).(db.Todo).ID
+	err := s.Query.DeleteTodo(s.Context, int32(id))
 	if err != nil {
-		return err
+		ErrorHandler(w, r, err)
 	}
-	err = s.Query.DeleteTodo(s.Context, int32(id))
-	if err != nil {
-		return ErrorHandler(c, err)
-	}
-	return s.WriteTodosTable(c)
+	s.WriteTodosTable(w, r)
 }
 
-func (s *Server) GetTodoNew(c *fiber.Ctx) error {
-	newTodo := db.GetTodoRow{}
-	views.WriteTodoId(c, newTodo, nil)
-	return SetHtmlContentType(c)
+func (s *Server) GetNewTodo(w http.ResponseWriter, r *http.Request) {
+	newTodo := db.Todo{}
+	views.WriteTodoId(w, newTodo, nil)
 }
 
-func (s *Server) PostTodo(c *fiber.Ctx) error {
-	_, err := s.Query.CreateTodo(s.Context, c.FormValue("description"))
+func (s *Server) PostTodo(w http.ResponseWriter, r *http.Request) {
+	_, err := s.Query.CreateTodo(s.Context, r.FormValue("description"))
 	if err != nil {
-		return ErrorHandler(c, err)
+		ErrorHandler(w, r, err)
 	}
-	return s.WriteTodosTable(c)
+	s.WriteTodosTable(w, r)
 }

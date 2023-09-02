@@ -2,34 +2,30 @@ package server
 
 import (
 	"io"
-	"log"
 	"math/rand"
 	"net/http"
 	"strconv"
 	"time"
 
 	"github.com/Jiang-Gianni/gianni-jiang/views"
-	"github.com/gofiber/fiber/v2"
 )
 
 const N = 100
 
 var R = rand.New(rand.NewSource(time.Now().UnixNano()))
 
-func (s *Server) GetNumbersApi(c *fiber.Ctx) error {
-
+func (s *Server) GetNumbersApi(w http.ResponseWriter, r *http.Request) {
 	n := R.Intn(N)
 	res, err := http.Get("http://numbersapi.com/" + strconv.Itoa(n))
 	if err != nil {
-		log.Println(err)
+		ErrorHandler(w, r, err)
 	}
 	defer res.Body.Close()
 
 	contents, err := io.ReadAll(res.Body)
 	if err != nil {
-		log.Println(err)
+		ErrorHandler(w, r, err)
 	}
 
-	views.WriteNumbersApiResponse(c, n, string(contents))
-	return SetHtmlContentType(c)
+	views.WriteNumbersApiResponse(w, n, string(contents))
 }

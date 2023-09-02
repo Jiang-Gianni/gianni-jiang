@@ -7,13 +7,13 @@ import (
 	"os"
 
 	"github.com/Jiang-Gianni/gianni-jiang/db"
-	"github.com/gofiber/fiber/v2"
+	"github.com/go-chi/chi/v5"
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
 type Server struct {
-	App     *fiber.App
+	Router  *chi.Mux
 	Query   *db.Queries
 	Context context.Context
 }
@@ -28,7 +28,7 @@ func New() Server {
 	postgres.Ping()
 	query := db.New(postgres)
 	return Server{
-		App:     fiber.New(),
+		Router:  chi.NewRouter(),
 		Query:   query,
 		Context: context.Background(),
 	}
@@ -36,21 +36,28 @@ func New() Server {
 
 func (s *Server) RegisterHandlers() {
 
-	s.App.Static("/assets", "./assets")
+	s.Router.Get("/assets/*", s.GetAssets)
+	s.Router.Get("/", s.GetIndex)
+	s.Router.Get("/new/todo", s.GetNewTodo)
+	s.Router.Get("/alpine", s.GetAlpine)
+	s.Router.Get("/number", s.GetNumbersApi)
+	s.Router.Get("/gmt/result", s.GetGmtResult)
 
-	s.App.Get("/todo", s.GetTodo)
-	s.App.Get("/todo:id", s.GetTodoId)
-	s.App.Post("/todo:id", s.PostTodoId)
-	s.App.Delete("/todo:id", s.DeleteTodoId)
-	s.App.Get("/todo/new", s.GetTodoNew)
-	s.App.Post("/todo", s.PostTodo)
+	s.Router.Route("/todo", func(r chi.Router) {
+		r.Get("/", s.GetTodo)
+		r.Post("/", s.PostTodo)
+		r.Route("/{todoId}", func(r chi.Router) {
+			r.Use(s.TodoCtx)
+			r.Get("/", s.GetTodoId)
+			r.Post("/", s.PostTodoId)
+			r.Delete("/", s.DeleteTodoId)
+		})
+	})
 
-	s.App.Get("/number", s.GetNumbersApi)
-	s.App.Get("/gmt/result", s.GetGmtResult)
-
-	s.App.Get("/", s.GetIndex)
-	s.App.Get("/:project", s.GetProject)
-	s.App.Get("/:project/:section", s.GetProject)
-	s.App.Post("/:project/feedback", s.PostFeedback)
+	s.Router.Route("/{project}", func(r chi.Router) {
+		r.Get("/", s.GetProject)
+		r.Get("/{section}", s.GetProject)
+		r.Post("/feedback", s.PostFeedback)
+	})
 
 }

@@ -68,8 +68,8 @@ With Cockroach DB the database cluster can be created in different regions in th
 
 <div x-data="{show:false}"><div>
 
-**Me Right Now**<!-- class="btn btn-primary" x-show="!show" @click="show=true" x-transition-->
-**![Me Right Now](./assets/website/harold.jpg)**<!-- class="mx-auto h-full" x-show="show" x-transition-->
+**Me Right Now**<!-- class="btn btn-primary" x-show="!show" @click="show=true" -->
+**![Me Right Now](./assets/website/harold.jpg)**<!-- class="mx-auto h-full" x-show="show" -->
 
 <!-- `{% endfunc %}` -->
 
@@ -135,7 +135,7 @@ Many languages also offer some templating tools, so generating the needed HTML w
 
 <br>
 
-In my opinion it also requires **less effort to parse the server fetched data into ready-to-use HTML directly from the backend rather than exposing a json data API that need to be consumed and parsed from the frontend**<!-- class="bg-purple-200" -->.
+In my opinion it also requires **less effort to parse the server fetched data into ready-to-use HTML directly from the backend rather than exposing a json data API that needs to be consumed and parsed from the frontend**<!-- class="bg-purple-200" -->.
 
 Same goes for managing **the state of the application**<!-- class="bg-indigo-200" -->, most of the times.
 
@@ -251,11 +251,36 @@ In the template files you can define functions, structs and insert some raw Go c
 
 <br>
 
-**These template functions and structs are compiled in the final binary**<!-- class="bg-cyan-200" -->: it is possible to run the final executable binary without any additional **`.html`** file dependency in the directory.
+**These template functions and structs are compiled in the final binary**<!-- class="bg-cyan-200" -->: it is possible to run the final executable binary and start the server without being dependent on any **`.html`** file in the directory that needs to be read and parsed (with all the performance implications).
 
 <br>
 
 The drawback is that the intermediate parsing step (from `html` to `go`) is always needed even for small on-the-fly changes, reason why I am autorestarting the server on file save using [**`nodemon`**](https://nodemon.io/).
+
+
+<br>
+
+
+## chi
+
+chi is a lightweight, idiomatic and composable router for building Go HTTP services.
+
+**[https://go-chi.io/#/README](https://go-chi.io/#/README)**<!-- target="_blank" -->
+
+<br>
+
+It makes it easy to group subroutes and to apply some common middlewares.
+
+<br>
+
+What I also like about chi is the [**Walk**](https://pkg.go.dev/github.com/go-chi/chi#Walk)<!-- target="_blank" class="animate-pulse" --> function: combining this with the standard library [**reflect**](https://pkg.go.dev/reflect)<!-- target="_blank" class="animate-pulse" --> and [**runtime**](https://pkg.go.dev/runtime)<!-- target="_blank" class="animate-pulse" --> packages makes it easy to **automatically generate the documentation of the application's APIs with all the exact file and line references of the functions in the codebase**<!-- class="bg-teal-200" -->.
+
+<br>
+
+Example for this application: **[https://github.com/Jiang-Gianni/gianni-jiang/blob/main/docRoutes.md](https://github.com/Jiang-Gianni/gianni-jiang/blob/main/docRoutes.md)**<!-- target="_blank" -->
+
+
+<br>
 
 <!-- `{% endfunc %}` -->
 

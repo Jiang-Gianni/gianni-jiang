@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/Jiang-Gianni/gianni-jiang/server"
-	"github.com/gofiber/adaptor/v2"
 )
 
 var (
@@ -17,5 +16,5 @@ func init() {
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	adaptor.FiberApp(s.App)(w, r)
+	s.Router.ServeHTTP(w, r)
 }
